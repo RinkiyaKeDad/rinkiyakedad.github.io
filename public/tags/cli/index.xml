@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>cli on Arsh Sharma</title>
+    <link>https://arshsharma.com/tags/cli/</link>
+    <description>Recent content in cli on Arsh Sharma</description>
+    <image>
+      <url>https://arshsharma.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://arshsharma.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 17 Apr 2021 20:12:05 +0530</lastBuildDate><atom:link href="https://arshsharma.com/tags/cli/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Creating A CLI In Golang</title>
+      <link>https://arshsharma.com/posts/2021-04-17-creating-a-cli-in-golang/</link>
+      <pubDate>Sat, 17 Apr 2021 20:12:05 +0530</pubDate>
+      
+      <guid>https://arshsharma.com/posts/2021-04-17-creating-a-cli-in-golang/</guid>
+      <description>This is technically the first post on my blog so I&amp;rsquo;m pretty excited to write this one 😄
+For the last few months, I&amp;rsquo;ve been working on depstat, which is a command-line tool to analyze dependencies, as part of my CNCF Internship. I&amp;rsquo;ve had a blast working on this especially because of the welcoming community. depstat is going to be used to evaluate dependency updates to Kubernetes and has been written in Go so I thought about sharing some stuff I learned :D</description>
+    </item>
+    
+  </channel>
+</rss>

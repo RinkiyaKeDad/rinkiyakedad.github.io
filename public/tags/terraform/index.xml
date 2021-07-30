@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>terraform on Arsh Sharma</title>
+    <link>https://arshsharma.com/tags/terraform/</link>
+    <description>Recent content in terraform on Arsh Sharma</description>
+    <image>
+      <url>https://arshsharma.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://arshsharma.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 14 Apr 2021 20:12:05 +0530</lastBuildDate><atom:link href="https://arshsharma.com/tags/terraform/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>To New Beginnings!</title>
+      <link>https://arshsharma.com/posts/2021-04-14-to-new-beginnings/</link>
+      <pubDate>Wed, 14 Apr 2021 20:12:05 +0530</pubDate>
+      
+      <guid>https://arshsharma.com/posts/2021-04-14-to-new-beginnings/</guid>
+      <description>Hey folks! I&amp;rsquo;ve finally set up my own blog (yaaaaaay!). I was looking at ways to import the articles from my Dev.to but it seems like there is no easy way to go about it and I can&amp;rsquo;t find the mental strength to copy-paste all 14 articles I&amp;rsquo;ve written till now.
+From now on, I will be posting all articles here first and then cross posting them to Dev.to (maybe Medium too).</description>
+    </item>
+    
+  </channel>
+</rss>
