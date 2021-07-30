@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Do You Concur? on Arsh Sharma</title>
+    <link>https://arshsharma.com/tags/do-you-concur/</link>
+    <description>Recent content in Do You Concur? on Arsh Sharma</description>
+    <image>
+      <url>https://arshsharma.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://arshsharma.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 27 May 2021 20:12:05 +0530</lastBuildDate><atom:link href="https://arshsharma.com/tags/do-you-concur/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Channels In Golang</title>
+      <link>https://arshsharma.com/posts/2021-05-27-channels-in-golang/</link>
+      <pubDate>Thu, 27 May 2021 20:12:05 +0530</pubDate>
+      
+      <guid>https://arshsharma.com/posts/2021-05-27-channels-in-golang/</guid>
+      <description>This is the final post in my &amp;ldquo;Do You Concur?&amp;rdquo; series. If you&amp;rsquo;ve not checked the other two out it is highly recommended you do that before reading this one. With that out of the way let&amp;rsquo;s get started!
+What Are Channels? A channel in Go can be best understood by comparing it with a box. It is a box where goroutines can put and take out the data. So essentially channels help your goroutines to share data.</description>
+    </item>
+    
+    <item>
+      <title>Race Conditions In Golang</title>
+      <link>https://arshsharma.com/posts/2021-05-24-race-conditions-in-golang/</link>
+      <pubDate>Mon, 24 May 2021 20:12:05 +0530</pubDate>
+      
+      <guid>https://arshsharma.com/posts/2021-05-24-race-conditions-in-golang/</guid>
+      <description>This post is the second in my series of articles on Concurrency in Go. In this post, we&amp;rsquo;ll understand what a race condition is, the why and how of it, and finally, we see some code that creates a race condition, and then we will learn to fix that race condition with the help of Mutexes. So let&amp;rsquo;s get started!
+The What, Why And How Of A Race Condition A race condition in Go occurs when two or more goroutines have shared data and interact with it at the same time.</description>
+    </item>
+    
+    <item>
+      <title>Concurrency In Golang</title>
+      <link>https://arshsharma.com/posts/2021-05-19-concurrency-in-golang/</link>
+      <pubDate>Wed, 19 May 2021 20:12:05 +0530</pubDate>
+      
+      <guid>https://arshsharma.com/posts/2021-05-19-concurrency-in-golang/</guid>
+      <description>I recently started learning more about concurrency in golang and so as with other things I learn, I decided to write about it. This article will be a part of a short series I plan to write about concurrency in Go. So let&amp;rsquo;s get started!
+Concurrency Vs Parallelism Before we start looking at some code, I think it would be better to know what concurrency actually is. But even before we do that let us first talk about parallelism because it is a word that often comes up when talking about concurrency.</description>
+    </item>
+    
+  </channel>
+</rss>

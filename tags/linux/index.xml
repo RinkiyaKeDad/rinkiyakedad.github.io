@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>linux on Arsh Sharma</title>
+    <link>https://arshsharma.com/tags/linux/</link>
+    <description>Recent content in linux on Arsh Sharma</description>
+    <image>
+      <url>https://arshsharma.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://arshsharma.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 19 Jul 2021 20:12:05 +0530</lastBuildDate><atom:link href="https://arshsharma.com/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Random Bash</title>
+      <link>https://arshsharma.com/posts/2021-07-19-random-bash/</link>
+      <pubDate>Mon, 19 Jul 2021 20:12:05 +0530</pubDate>
+      
+      <guid>https://arshsharma.com/posts/2021-07-19-random-bash/</guid>
+      <description>Hey everyone, recently I developed quite an interest in Bash so I&amp;rsquo;ve been trying to learn it. Unlike other things, this time it wasn&amp;rsquo;t much-structured learning rather just some random tidbits I picked on here and there. In this post I&amp;rsquo;ll share those things so that together we can demystify this fancy language. Also, some things might just be about Linux in general rather than bash specific.
+#!/bin/bash You might have seen that a lot of bash scripts begin with #!</description>
+    </item>
+    
+  </channel>
+</rss>
