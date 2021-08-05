@@ -5,8 +5,8 @@
     <link>https://arshsharma.com/tags/docker/</link>
     <description>Recent content in docker on Arsh Sharma</description>
     <image>
-      <url>https://arshsharma.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://arshsharma.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://arshsharma.com/socialimage.png</url>
+      <link>https://arshsharma.com/socialimage.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 14 Apr 2021 20:12:05 +0530</lastBuildDate><atom:link href="https://arshsharma.com/tags/docker/index.xml" rel="self" type="application/rss+xml" />
