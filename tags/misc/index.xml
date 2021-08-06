@@ -1,23 +1,655 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>misc on Arsh Sharma</title>
-    <link>https://arshsharma.com/tags/misc/</link>
+    <link>https://arshsharma.com/</link>
     <description>Recent content in misc on Arsh Sharma</description>
-    <image>
-      <url>https://arshsharma.com/socialimage.png</url>
-      <link>https://arshsharma.com/socialimage.png</link>
-    </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 14 Apr 2021 20:12:05 +0530</lastBuildDate><atom:link href="https://arshsharma.com/tags/misc/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 14 Apr 2021 20:12:05 +0530</lastBuildDate>
+    
+	<atom:link href="https://arshsharma.com/tags/misc/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Random Bash</title>
+      <link>https://arshsharma.com/posts/2021-07-19-random-bash/</link>
+      <pubDate>Mon, 19 Jul 2021 20:12:05 +0530</pubDate>
+      
+      <guid>https://arshsharma.com/posts/2021-07-19-random-bash/</guid>
+      <description>&lt;p&gt;Hey everyone, recently I developed quite an interest in Bash so I&amp;rsquo;ve been trying to learn it. Unlike other things, this time it wasn&amp;rsquo;t much-structured learning rather just some random tidbits I picked on here and there. In this post I&amp;rsquo;ll share those things so that together we can demystify this fancy language. Also, some things might just be about Linux in general rather than bash specific.&lt;/p&gt;
+&lt;h2 id=&#34;binbash&#34;&gt;#!/bin/bash&lt;/h2&gt;
+&lt;p&gt;You might have seen that a lot of bash scripts begin with &lt;code&gt;#!/bin/bash&lt;/code&gt;. So what exactly is this?&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;#!&lt;/code&gt; is called shebang. It gets its name because it is a combination of &amp;ldquo;sharp&amp;rdquo; (&lt;code&gt;#&lt;/code&gt;) and &amp;ldquo;bang&amp;rdquo; (&lt;code&gt;!&lt;/code&gt;). We start each script with a shebang and then the path to the interpreter.  This tells the shell what program to interpret the script with. In this case, we want the script to be run by the &lt;code&gt;bash&lt;/code&gt; interpreter so we specify the path to it.&lt;/p&gt;
+&lt;h2 id=&#34;something-interesting-about-ls--l&#34;&gt;Something Interesting About &lt;code&gt;ls -l&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;When you do &lt;code&gt;ls -l&lt;/code&gt; you see something like this&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;-rw-r--r-- 1 arsh staff 19 Jul 21 11:57 file.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Let us break the first &amp;ldquo;word&amp;rdquo; and see what it means. Even before we do that here&amp;rsquo;s something you should know to understand what comes next,&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;r -&amp;gt; read
+w -&amp;gt; write
+x -&amp;gt; execute
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You&amp;rsquo;ll notice that removing the first dash there are three sets each with three characters. Each of the sets in order of left to the right refers to permissions granted to the owner of the file, to the group of the file, and permissions available to everyone else on the system of the file respectively.&lt;/p&gt;
+&lt;p&gt;The permissions are read as &lt;code&gt;rwx&lt;/code&gt; and if either one of them is a &lt;code&gt;-&lt;/code&gt; then that means that particular permission is not available to that user. For example here, it would mean that the owner of the file has read and write permissions (&lt;code&gt;rw-&lt;/code&gt;) where as the group of the file and everyone else has only read permissions (&lt;code&gt;r--&lt;/code&gt;).&lt;/p&gt;
+&lt;h2 id=&#34;changing-permissions-which-chmod&#34;&gt;Changing permissions which &lt;code&gt;chmod&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;If you want to change the permissions of a file (which we saw using &lt;code&gt;ls -l&lt;/code&gt;) you use &lt;code&gt;chmod&lt;/code&gt;. If you want the file to be executable by everyone but give write permissions to only the owner you can run, &lt;code&gt;chmod 755 &amp;lt;filelocation&amp;gt;&lt;/code&gt;. But where does this &lt;code&gt;755&lt;/code&gt; come from?&lt;/p&gt;
+&lt;p&gt;To understand that first take a note of these values&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;r (read) -&amp;gt; 4
+w (write) -&amp;gt; 2
+x (execute) -&amp;gt; 1
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now let&amp;rsquo;s try to see a pattern :)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;7 -&amp;gt; 4 + 2 + 1
+5 -&amp;gt; 4 + 0 + 1
+5 -&amp;gt; 4 + 0 + 1
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Starting to make sense? The first row corresponds to the permissions the owner of the file would have, the second corresponds to the ones the group will have, and the third, corresponds to the permissions everyone else on the filesystem will have. You can create similar combinations as per your need to modify the file permissions.&lt;/p&gt;
+&lt;h2 id=&#34;some-basics-about-variables&#34;&gt;Some Basics About Variables&lt;/h2&gt;
+&lt;p&gt;Variables in bash can be directly assigned values without specifying any type like int, string, etc.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;VAR_NAME=&amp;quot;value&amp;quot;
+VAR_NAME=5
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;To reference a variable we use a dollar sign along with its name, for example, &lt;code&gt;$VAR_NAME&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Single quotes prevent the expansion of variables whereas double don&amp;rsquo;t. For example,&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;echo &#39;$VAR_NAME is a variable&#39; -&amp;gt; $VAR_NAME is a variable
+echo &amp;quot;$VAR_NAME is a variable&amp;quot; -&amp;gt; value is a variable (if VAR_NAME was set to &amp;quot;value&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;We can also place the variable name in &lt;code&gt;{}&lt;/code&gt; and precede the opening brace with &lt;code&gt;$&lt;/code&gt;. This is useful in cases like,&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;WORD=&amp;quot;talk&amp;quot;
+echo &amp;quot;${WORD}ing&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Output -&amp;gt; &amp;ldquo;talking&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;Also, note that variable names are in upper case by &lt;strong&gt;convention&lt;/strong&gt; but this isn&amp;rsquo;t mandatory by bash.&lt;/p&gt;
+&lt;h2 id=&#34;something-about-commands&#34;&gt;Something About Commands&lt;/h2&gt;
+&lt;p&gt;If you&amp;rsquo;re not sure about some command, let&amp;rsquo;s say &lt;code&gt;head&lt;/code&gt; you can run &lt;code&gt;type -a head&lt;/code&gt; and you would see something like&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;head is /usr/bin/head
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;On the other hand for some commands like &lt;code&gt;echo&lt;/code&gt; you would see something like,&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;echo is a shell builtin
+echo is /bin/echo
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;If a command is a shell builtin you can use &lt;code&gt;help &amp;lt;command&amp;gt;&lt;/code&gt; to get information about it. &lt;code&gt;help&lt;/code&gt; is a bash command which uses internal bash structures to store and retrieve information about bash commands.&lt;/p&gt;
+&lt;p&gt;If something isn&amp;rsquo;t a shell builtin, you can use the &lt;code&gt;man&lt;/code&gt; command to get information about it. Quoting directly from &lt;a href=&#34;https://unix.stackexchange.com/a/86584&#34;&gt;here&lt;/a&gt;,&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;Help is a built-in &amp;ldquo;usage&amp;rdquo; of the command, and not all commands implement it, or at least not the same way, however, man is a command by itself which is a pager program that reads manual.&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Every time we type something in the command line, bash first tries to find a function with that name to execute, if not found then it looks for that command in its list of built-in commands, if it&amp;rsquo;s not found even there then bash searches through the list of dirs defined in the &lt;code&gt;$PATH&lt;/code&gt; variable and executes the first match it finds. If still no match then it says command not found.&lt;/p&gt;
+&lt;p&gt;You can see the list of dirs it will search through by running &lt;code&gt;echo $PATH&lt;/code&gt;. You can also edit this &lt;code&gt;$PATH&lt;/code&gt; to add more dirs where it can look for commands. It goes through the colon-separated dirs defined in the &lt;code&gt;$PATH&lt;/code&gt; in order and as soon as it finds a match it stops there. If you want to see what gets executed when you run a command, you can run &lt;code&gt;which &amp;lt;command&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;which depstat                                                      
+/Users/arsh/go/bin/depstat
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This means instead of running &lt;a href=&#34;https://github.com/kubernetes-sigs/depstat&#34;&gt;depstat&lt;/a&gt; I could also have run &lt;code&gt;/Users/arsh/go/bin/depstat&lt;/code&gt;. If you do &lt;code&gt;which -a &amp;lt;command&amp;gt;&lt;/code&gt; then it will show you all instances it found of that command.&lt;/p&gt;
+&lt;p&gt;Another thing about commands is that you can combine their shorthands for flags. For example, &lt;code&gt;id -n -u&lt;/code&gt; can also be executed as &lt;code&gt;id -nu&lt;/code&gt; or &lt;code&gt;id -un&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;One last thing is that you can store the output of commands in a variable using the following syntax,&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;USER_NAME=$(id -un)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Also, note that if the exit status of a command is 0 that means it executed successfully without any errors. Non-zero exit status always means something went wrong.&lt;/p&gt;
+&lt;p&gt;Well this was it for this article and I hope you learned some interesting linux-y things :)&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Using Kyverno To Enforce EKS Best Practices</title>
+      <link>https://arshsharma.com/posts/2021-06-21-using-kyverno-to-enforce-eks-best-practices/</link>
+      <pubDate>Mon, 21 Jun 2021 20:12:05 +0530</pubDate>
+      
+      <guid>https://arshsharma.com/posts/2021-06-21-using-kyverno-to-enforce-eks-best-practices/</guid>
+      <description>&lt;p&gt;Hey folks, in this post we’ll see how you can use &lt;a href=&#34;https://kyverno.io/&#34;&gt;Kyverno&lt;/a&gt; to enforce some best practices for your &lt;a href=&#34;https://aws.amazon.com/eks/&#34;&gt;EKS&lt;/a&gt; cluster. For those not familiar, Kyverno is a Kubernetes native policy engine that aims to make your life easy when managing clusters. To know more you can read my &lt;a href=&#34;https://dev.to/rinkiyakedad/kyverno-simplify-managing-k8s-clusters-2kej&#34;&gt;previous post&lt;/a&gt; on Kyverno where we discuss the project and its internals in detail. With that out of the way, let’s get started!&lt;/p&gt;
+&lt;p&gt;EKS best practices recommend the use of separate &lt;a href=&#34;https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html&#34;&gt;IAM roles&lt;/a&gt; for different use cases. For example, for dev and prod environments you should prefer to have separate IAM roles which can configure objects in those environments. Now the problem that arises with this is how do you make sure that the IAM role which has permission for the dev environment doesn’t accidentally create objects in the production environment? If you have the roles configured properly it would obviously not allow this to happen but with Kyverno not only can you fool-proof this but also make sure that if someone does try this, then it gets reported.&lt;/p&gt;
+&lt;p&gt;We are going to write a policy for Kyverno to check if the object being created in a namespace (dev or prod) has the right IAM role specified in its annotations or not. So let’s begin!&lt;/p&gt;
+&lt;h2 id=&#34;installing-kyverno&#34;&gt;Installing Kyverno&lt;/h2&gt;
+&lt;p&gt;The simplest way to install Kyverno on your cluster is by running:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubectl create -f https://raw.githubusercontent.com/kyverno/kyverno/main/definitions/release/install.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;If you visit the &lt;a href=&#34;https://kyverno.io/docs/installation/&#34;&gt;Kyverno documentation&lt;/a&gt; you’ll see ways to install it using helm and ways to customize your installation of Kyverno.&lt;/p&gt;
+&lt;h2 id=&#34;creating-a-configmap&#34;&gt;Creating A ConfigMap&lt;/h2&gt;
+&lt;p&gt;Before we create the actual Kyverno policy let us first create a config map that will store the IAM roles for dev and prod environments. This can be done very simply using:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: ns-roles-dictionary
+  namespace: kyverno
+data:
+  prod: &amp;quot;arn:aws:iam::123456789012:role/prod&amp;quot;
+  dev: &amp;quot;arn:aws:iam::123456789012:role/dev&amp;quot;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;creating-the-kyverno-policy&#34;&gt;Creating The Kyverno Policy&lt;/h2&gt;
+&lt;p&gt;Now to the fun part - creating our Kyverno policy. Let us first look at the policy YAML file and then I’ll walk you through it. If this is your first time seeing a Kyverno policy don’t worry at all because one of the most beautiful things about Kyverno is how intuitive it is. It follows a very similar structure to the YAML files for Kubernetes objects.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: deployment-valid-role
+  annotations:
+    policies.kyverno.io/category: Security
+    policies.kyverno.io/description: Rules to enforce valid roles, based on namespace-role dictionary
+spec:
+  validationFailureAction: enforce
+  rules:
+  - name: validate-role-annotation
+    context:
+      - name: ns-roles-dictionary
+        configMap:
+          name: ns-roles-dictionary
+          namespace: kyverno
+    match:
+      resources:
+        kinds:
+        - Deployment
+    preconditions:
+    - key: &amp;quot;{{ request.object.metadata.namespace }}&amp;quot;
+      operator: In
+      value: [&amp;quot;prod&amp;quot;, &amp;quot;dev&amp;quot;]
+    - key: &amp;quot;{{ request.object.spec.template.metadata.annotations.\&amp;quot;iam.amazonaws.com/role\&amp;quot; }}&amp;quot;
+      operator: NotEqual
+      value: &amp;quot;&amp;quot;
+    validate:
+      message: &amp;quot;Annotation iam.amazonaws.com/role \&amp;quot;{{ request.object.spec.template.metadata.annotations.\&amp;quot;iam.amazonaws.com/role\&amp;quot; }}\&amp;quot; is not allowed for the \&amp;quot;{{ request.object.metadata.namespace }}\&amp;quot; namespace.&amp;quot;
+      deny:
+        conditions:
+        - key: &amp;quot;{{ request.object.spec.template.metadata.annotations.\&amp;quot;iam.amazonaws.com/role\&amp;quot; }}&amp;quot;
+          operator: NotIn
+          value:  &amp;quot;{{ \&amp;quot;ns-roles-dictionary\&amp;quot;.data.\&amp;quot;{{ request.object.metadata.namespace }}\&amp;quot; }}&amp;quot;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Not as scary as you expected, right? Let’s go through it line by line now :)&lt;/p&gt;
+&lt;p&gt;Let’s begin from the spec section since everything prior to that is all the standard boilerplate stuff. The first thing in the spec section is &lt;code&gt;validationFaliureAction&lt;/code&gt; which we have set to &lt;code&gt;enforce&lt;/code&gt;. What this does is specify what should happen if this policy is violated by an object. Setting it to &lt;code&gt;enforce&lt;/code&gt; would make sure that the object which violates this policy does not get created whereas setting it to &lt;code&gt;audit&lt;/code&gt; will allow the object to get created but will report that violation.&lt;/p&gt;
+&lt;p&gt;Each Kyverno policy must have at least one rule which is what we define next. After specifying the name of the rule we specify the &lt;code&gt;configMap&lt;/code&gt; we created earlier. This is done using the &lt;code&gt;context&lt;/code&gt; key. We do this because it allows us to easily refer to values from this &lt;code&gt;configMap&lt;/code&gt; in our Kyverno policy, as you will see later.&lt;/p&gt;
+&lt;p&gt;Next up we specify the Kubernetes objects we want this policy to act on under the &lt;code&gt;resources&lt;/code&gt; key. Kyverno offers a lot of control over here. For example, you can choose deployments but add an exclude block which would tell Kyverno to not include some specific Deployments. Pretty cool right?&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;match:
+  resources:
+    kinds:
+    - Deployment
+exclude:
+  clusterroles:
+  - cluster-admin
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This example matches all Deployments excluding those created using the cluster-admin ClusterRole.&lt;/p&gt;
+&lt;p&gt;After specifying what resources we want the policy to act on, we specify some &lt;code&gt;preconditions&lt;/code&gt;. Think of them as custom filters giving you more control over when the policy should be applied on the Kubernetes objects you select using the Match and Exclude blocks.
+The first precondition simply states that the policy should not be applied if the deployment is being created in a namespace other than &lt;code&gt;dev&lt;/code&gt; or &lt;code&gt;prod&lt;/code&gt;. And the second precondition says that if the deployment object simply has no annotation mentioning an IAM role, then too the policy must not be applied. You may want to remove this second precondition based on your particular use case.&lt;/p&gt;
+&lt;p&gt;Once we have fine-grain control over what objects this policy would get applied to, we specify what the policy should do. Kyverno policies can &lt;a href=&#34;https://kyverno.io/docs/kyverno-policies/&#34;&gt;mutate, validate or generate&lt;/a&gt; Kubernetes objects. This policy is going to validate the IAM roles so we specify the &lt;code&gt;validate&lt;/code&gt; block. In the &lt;code&gt;message&lt;/code&gt; key we specify what message should be shown in case an object violates the policy. The next lines of the policy simply say that the request should be denied if the &lt;code&gt;key&lt;/code&gt; is not present in the &lt;code&gt;value&lt;/code&gt;, that is if the value of the “iam.amazonaws.com/role” annotation in the selected deployment does not correspond to the correct value of the namespace present in our config map.&lt;/p&gt;
+&lt;p&gt;And this is it. Yes, it is this simple to create policies in Kyverno! I hope this post was able to show you how powerful yet easy to use Kyverno is. If you’re interested in knowing more, do check out the &lt;a href=&#34;https://kyverno.io/docs/&#34;&gt;Kyverno documentation&lt;/a&gt;. If you have any doubts or feedback feel free to join #kyverno channel on the Kubernetes Slack to talk to the maintainers and other community members!&lt;/p&gt;
+&lt;p&gt;Thanks for reading :)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;If you’re interested in a similar tutorial but for GKE, you can check out &lt;a href=&#34;https://cloud.google.com/community/tutorials/restrict-workload-identity-with-kyverno&#34;&gt;this&lt;/a&gt; post.&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Channels In Golang</title>
+      <link>https://arshsharma.com/posts/2021-05-27-channels-in-golang/</link>
+      <pubDate>Thu, 27 May 2021 20:12:05 +0530</pubDate>
+      
+      <guid>https://arshsharma.com/posts/2021-05-27-channels-in-golang/</guid>
+      <description>&lt;p&gt;This is the final post in my &amp;ldquo;Do You Concur?&amp;rdquo; series. If you&amp;rsquo;ve not checked the other two out it is highly recommended you do that before reading this one. With that out of the way let&amp;rsquo;s get started!&lt;/p&gt;
+&lt;h2 id=&#34;what-are-channels&#34;&gt;What Are Channels?&lt;/h2&gt;
+&lt;p&gt;A channel in Go can be best understood by comparing it with a box. It is a box where goroutines can put and take out the data. So essentially channels help your goroutines to share data. One goroutine can send a value into the channel and another goroutine can receive those values. A very simple code snippet demonstrating this is:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;package main
+
+import &amp;quot;fmt&amp;quot;
+
+func main() {
+	c := make(chan int)
+	go func() {
+		c &amp;lt;- 69
+	}()
+	fmt.Println(&amp;lt;-c)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;channels-are-blockers&#34;&gt;Channels Are Blockers!&lt;/h2&gt;
+&lt;p&gt;&amp;ldquo;Channels block a goroutine if there is no buffer space.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;A lot to explain in this one line. Let us first run some things. Trying running the following code:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;package main
+
+import &amp;quot;fmt&amp;quot;
+
+func main() {
+	c := make(chan int)
+	c &amp;lt;- 69
+	fmt.Println(&amp;lt;-c)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;It will give you an error. Now try running:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;package main
+
+import &amp;quot;fmt&amp;quot;
+
+func main() {
+	c := make(chan int, 1)
+	c &amp;lt;- 69
+	fmt.Println(&amp;lt;-c)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This should work perfectly fine! So let us start understanding what is happening.&lt;/p&gt;
+&lt;p&gt;The 1 that we specified while initializing &lt;code&gt;c := make(chan int, 1)&lt;/code&gt; is called the buffer space. In the code that didn&amp;rsquo;t run there was no buffer space. A channel like that is called an unbuffered channel. Now read the following golden rule very carefully:&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;Sending to unbuffered channels blocks the goroutine until something receives and vice-versa.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;Quoting directly from &lt;a href=&#34;https://stackoverflow.com/a/56706591&#34;&gt;this&lt;/a&gt;,&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;Sending to a channel with no available buffer space blocks the sender until the send can complete; receiving from a channel with no available messages blocks the receiver until the receive can complete.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;Looking at the code which failed, there was only one goroutine, the main goroutine. So when it reached the &lt;code&gt;c &amp;lt;- 69&lt;/code&gt; line, it was blocked until some other goroutine received from c. But since there was no other goroutine it would remain blocked forever and that is why our code failed.&lt;/p&gt;
+&lt;p&gt;To fix this we could either launch a separate goroutine as shown in the initial code snippet or we could increase the buffer space to 1 as we did in the third code snippet. Increasing the buffer space to 1 basically told the channel that you can continue without blocking even if you have 1 value being sent to you with no one to receive it. So if we modify the third code snippet to as follows it will again not run as now we&amp;rsquo;re sending two values:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;package main
+
+import &amp;quot;fmt&amp;quot;
+
+func main() {
+	c := make(chan int, 1)
+	c &amp;lt;- 69
+	c &amp;lt;- 69
+	fmt.Println(&amp;lt;-c)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Well, this was it for this post and I hope you now have a basic understanding of channels and how they work. With this series, I tried to cover the basics around concurrency in Golang and I hope I was able to put the ideas across.&lt;/p&gt;
+&lt;p&gt;Thank you for reading :)&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Race Conditions In Golang</title>
+      <link>https://arshsharma.com/posts/2021-05-24-race-conditions-in-golang/</link>
+      <pubDate>Mon, 24 May 2021 20:12:05 +0530</pubDate>
+      
+      <guid>https://arshsharma.com/posts/2021-05-24-race-conditions-in-golang/</guid>
+      <description>&lt;p&gt;This post is the second in my series of articles on &lt;a href=&#34;https://arshsharma.com/posts/2021-05-19-concurrency-in-golang/&#34;&gt;Concurrency in Go&lt;/a&gt;. In this post, we&amp;rsquo;ll understand what a race condition is, the why and how of it, and finally, we see some code that creates a race condition, and then we will learn to fix that race condition with the help of Mutexes. So let&amp;rsquo;s get started!&lt;/p&gt;
+&lt;h2 id=&#34;the-what-why-and-how-of-a-race-condition&#34;&gt;The What, Why And How Of A Race Condition&lt;/h2&gt;
+&lt;p&gt;A race condition in Go occurs when two or more goroutines have shared data and interact with it at the same time. This is best explained with the help of an example.&lt;/p&gt;
+&lt;p&gt;Let us say two functions that increment an integer by 1 are launched in two separate goroutines and act on the same variable. Now if they were executed sequentially then the initial integer would have increased by 2. But now that they are in a race condition this can&amp;rsquo;t be guaranteed. Why you may ask?&lt;/p&gt;
+&lt;p&gt;Each function basically has three tasks:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Read from the variable&lt;/li&gt;
+&lt;li&gt;Increment it&lt;/li&gt;
+&lt;li&gt;Write back to it&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;So let&amp;rsquo;s say that function 1 reads the variable. But before it increments and writes it back function 2 also reads the variable. Both of them now increment the variable and write it back. But the value of the variable would have increased by only 1 since both functions initially read the same value. The following image should make it even more clear.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://arshsharma.com/2021-05-24-1.jpeg&#34; alt=&#34;race condition&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;Please note that this is only one of the possible scenarios. It might just happen that the second goroutine reads the variable after the first one has already incremented and written back to it. In this case, the value would have increased by two. So when there is a race condition the final output is not fixed and can vary each time you run the program.&lt;/p&gt;
+&lt;p&gt;I think it should also go without saying that we cannot have a race condition if we only have a single goroutine.&lt;/p&gt;
+&lt;p&gt;So now that you have an idea about what race conditions are, let us go and see them in action!&lt;/p&gt;
+&lt;h2 id=&#34;coding-our-race-condition&#34;&gt;Coding Our Race Condition&lt;/h2&gt;
+&lt;p&gt;Copy the following code in your &lt;code&gt;main.go&lt;/code&gt; file and then we&amp;rsquo;ll walk through it.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;package main
+
+import (
+	&amp;quot;fmt&amp;quot;
+	&amp;quot;runtime&amp;quot;
+	&amp;quot;sync&amp;quot;
+)
+
+func main() {
+
+	counter := 0
+
+	const num = 15
+	var wg sync.WaitGroup
+	wg.Add(num)
+
+	for i := 0; i &amp;lt; num; i++ {
+		go func() {
+			temp := counter
+			runtime.Gosched()
+			temp++
+			counter = temp
+			wg.Done()
+		}()
+	}
+	wg.Wait()
+	fmt.Println(&amp;quot;count:&amp;quot;, counter)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;We declare a variable &lt;code&gt;counter&lt;/code&gt; which is what all our goroutines will try to modify simultaneously. Then we launch 15 anonymous self-executing functions in their separate goroutines. Each of these functions reads the value from &lt;code&gt;counter&lt;/code&gt;, increments it, and then writes it back. Apart from all this we also use a &lt;a href=&#34;https://arshs.tech/concurrency-in-golang/&#34;&gt;WaitGroup&lt;/a&gt; which I explained in detail in the previous article. This explains everything apart from &lt;code&gt;runtime.Gosched()&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Before I explain what that does, comment that line and run the code a few times. You will see that each time the output is 15. This should not be the case given there is a race condition. Let&amp;rsquo;s see something even more interesting. Change the initial value of num to 100 and now run it multiple times. This time you&amp;rsquo;ll see that different values appear but they&amp;rsquo;re still close to 100 and not much apart. Next, change this value to 1000 and run it multiple times you should now start seeing even greater differences in the values you are getting. Now uncomment the line and repeat the steps with num as 15, 100, and 1000. If you did everything correctly now you should see a different value each time in all three cases and the values would be much farther apart than before.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Please note that you should not try this on some online IDE as they are not suitable for running multiple goroutines simultaneously.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;So what is happening?!&lt;/p&gt;
+&lt;p&gt;Well, obviously this was a race condition because we saw different values for 100 and 1000. But what did &lt;code&gt;runtime.Gosched()&lt;/code&gt; do? The thing is that Go tries to avoid these race conditions on its own and succeeds when the number is relatively small like 15 but has a tough time keeping up as we increase the number. Go uses something called &lt;a href=&#34;http://www.cafeaulait.org/course/week11/32.html&#34;&gt;cooperative multithreading&lt;/a&gt;. If you read the link it says,&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;In cooperative models, once a thread is given control it continues to run until it explicitly yields control or it blocks.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/a/13108469&#34;&gt;This answer&lt;/a&gt; also provides much more clarity. To put it in extremely simple terms, &lt;code&gt;runtime.Gosched()&lt;/code&gt; basically says go ahead and run some other goroutine if you want. In other words, it yields the processor allowing other goroutines to run. It basically sorta increases the randomness so that the probability of goroutines interfering with each other and reading-writing in different order increases.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Note that you can also confirm the existence of a race condition by executing the program with the &lt;code&gt;race&lt;/code&gt; flag: &lt;code&gt;go run -race main.go&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;fixing-our-race-condition&#34;&gt;Fixing Our Race Condition&lt;/h2&gt;
+&lt;p&gt;Now that we&amp;rsquo;ve created a race condition, how do we fix it? We will be using a &lt;code&gt;Mutex&lt;/code&gt; to prevent the race condition. We know the data race occurs due to multiple goroutines accessing a shared variable. We can prevent this by sorta locking access to our &lt;code&gt;counter&lt;/code&gt; variable when one of the goroutines reads it and then unlocking it when it is done writing the incremented value. This way nobody else can use that variable when a particular goroutine is updating it. This is exactly what &lt;a href=&#34;https://golang.org/pkg/sync/#Mutex&#34;&gt;Mutex&lt;/a&gt; does.&lt;/p&gt;
+&lt;p&gt;With the above explanation I think you&amp;rsquo;ll now be able to make sense of the following update we made to our code:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;	const num = 15
+	var wg sync.WaitGroup
+	wg.Add(num)
+
+	var mu sync.Mutex
+
+	for i := 0; i &amp;lt; num; i++ {
+		go func() {
+			mu.Lock()
+			temp := counter
+			runtime.Gosched()
+			temp++
+			counter = temp
+			mu.Unlock()
+			wg.Done()
+		}()
+	}
+	wg.Wait()
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Run &lt;code&gt;go run -race main.go&lt;/code&gt; and you&amp;rsquo;ll see that no race condition gets reported this time! And since there are no race conditions now the value of &lt;code&gt;counter&lt;/code&gt; will also be 15 each time.&lt;/p&gt;
+&lt;p&gt;I hope this made a bit more sense. This is something I struggled to wrap my head around myself so I can say from experience that you&amp;rsquo;ll need to think about it for some time and go read some other sources also including the &lt;a href=&#34;https://golang.org/pkg/runtime/#Gosched&#34;&gt;official docs&lt;/a&gt;. Stay tuned for the next article!&lt;/p&gt;
+&lt;p&gt;Thank you for reading! :)&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Concurrency In Golang</title>
+      <link>https://arshsharma.com/posts/2021-05-19-concurrency-in-golang/</link>
+      <pubDate>Wed, 19 May 2021 20:12:05 +0530</pubDate>
+      
+      <guid>https://arshsharma.com/posts/2021-05-19-concurrency-in-golang/</guid>
+      <description>&lt;p&gt;I recently started learning more about concurrency in golang and so as with other things I learn, I decided to write about it. This article will be a part of a short series I plan to write about concurrency in Go. So let&amp;rsquo;s get started!&lt;/p&gt;
+&lt;h2 id=&#34;concurrency-vs-parallelism&#34;&gt;Concurrency Vs Parallelism&lt;/h2&gt;
+&lt;p&gt;Before we start looking at some code, I think it would be better to know what concurrency actually is. But even before we do that let us first talk about parallelism because it is a word that often comes up when talking about concurrency.&lt;/p&gt;
+&lt;p&gt;In very simple terms parallelism can be understood as when two &lt;em&gt;instructions&lt;/em&gt; are executed in parallel, that is, simultaneously instead of the traditional way of sequential execution. &amp;ldquo;Instructions&amp;rdquo; is a loosely used word in that sentence and could have different meanings in different contexts. More often than not it means functions or methods. For example,  if you have this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func main(){
+    woof()
+    meow()
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Then the functions get executed sequentially, that is, first the &lt;code&gt;woof&lt;/code&gt; function returns and then after that, the &lt;code&gt;meow&lt;/code&gt; function returns. If they were being executed parallelly then immediately after starting the execution of &lt;code&gt;woof&lt;/code&gt; the execution of &lt;code&gt;meow&lt;/code&gt; would start without waiting for &lt;code&gt;woof&lt;/code&gt; to return.&lt;/p&gt;
+&lt;p&gt;So now that you have an idea of what parallelism is, let us come back to our original question: what is concurrency?&lt;/p&gt;
+&lt;p&gt;Concurrency is a design pattern. It is a way to build things. Concurrency enables parallelism but it doesn&amp;rsquo;t guarantee it.&lt;/p&gt;
+&lt;p&gt;Let me make it more clear by extending the above example. If you tell the code above that &lt;code&gt;woof&lt;/code&gt; &lt;em&gt;can&lt;/em&gt; be called in a separate CPU thread then that would be concurrency. Now this doesn&amp;rsquo;t guarantee that &lt;code&gt;woof&lt;/code&gt; will be called in a separate thread because what if you only have one thread?&lt;/p&gt;
+&lt;p&gt;But in case circumstances allow it then the two functions will be executed parallelly. I hope this makes it more clear what I mean by the line that concurrency is a design pattern.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Parallelism is not the goal of concurrency, concurrency&amp;rsquo;s goal is a good structure. - &lt;a href=&#34;https://youtu.be/oV9rvDllKEg?t=172&#34;&gt;Rob Pike&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;concurrency-in-go&#34;&gt;Concurrency in Go&lt;/h2&gt;
+&lt;p&gt;So now that you have an idea of what concurrency is let us look at concurrency in Golang. I&amp;rsquo;m going to try and keep this as simple as possible. Let me expand on the code shown above. Let us say we have the following &lt;code&gt;main.go&lt;/code&gt; file:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;package main
+
+import (
+	&amp;quot;fmt&amp;quot;
+)
+
+func main() {
+	woof()
+	meow()
+}
+
+func woof() {
+	for i := 1; i &amp;lt;= 5; i++ {
+		fmt.Println(&amp;quot;woof &amp;quot;, i)
+	}
+}
+
+func meow() {
+	for i := 1; i &amp;lt;= 5; i++ {
+		fmt.Println(&amp;quot;meow &amp;quot;, i)
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Right now the instructions in the main function would execute sequentially. So first &lt;code&gt;woof&lt;/code&gt; will be called and when it returns then and only then will &lt;code&gt;meow&lt;/code&gt; be called. To &lt;em&gt;enable&lt;/em&gt; parallel execution we use the &lt;code&gt;go&lt;/code&gt; keyword right before the instruction. So, replace the main function with:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func main() {
+	go woof()
+	meow()
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now let us see what happens. Run the program and you&amp;rsquo;ll see that output from only the meow function. Strange, no?&lt;/p&gt;
+&lt;p&gt;When we talk about concurrency you can imagine parallel lanes and each instruction executing in its own lane parallel to the others. Each of these lanes is what we call a &lt;code&gt;goroutine&lt;/code&gt;. So when we execute stuff sequentially, there is only one goroutine, the main goroutine.&lt;/p&gt;
+&lt;p&gt;We created another one when said &lt;code&gt;go woof()&lt;/code&gt;. But what happened was that before this goroutine could print its output, the main goroutine executed the next instruction (which was calling meow) and after that, it saw that there was nothing to be executed so it ended.&lt;/p&gt;
+&lt;p&gt;And when the main goroutine ends all others end automatically. So the reason we didn&amp;rsquo;t see any output from &lt;code&gt;woof&lt;/code&gt; is because it&amp;rsquo;s routine ended before it could print anything.&lt;/p&gt;
+&lt;p&gt;So how do we avoid this?&lt;/p&gt;
+&lt;h2 id=&#34;enter-waitgroup&#34;&gt;Enter WaitGroup&lt;/h2&gt;
+&lt;p&gt;WaitGroup provides us with the necessary synchronization needed to execute both functions. Replace the contents of your main.go with:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;package main
+
+import (
+	&amp;quot;fmt&amp;quot;
+	&amp;quot;runtime&amp;quot;
+	&amp;quot;sync&amp;quot;
+)
+
+var wg sync.WaitGroup
+
+func main() {
+	// add one thing to wait for
+	wg.Add(1)
+	go woof()
+	meow()
+
+	// stop waiting when 0 things in waiting list
+	wg.Wait()
+}
+
+func woof() {
+	for i := 1; i &amp;lt;= 5; i++ {
+		fmt.Println(&amp;quot;woof &amp;quot;, i)
+	}
+	// remove one thing from waiting list
+	wg.Done()
+}
+
+func bar() {
+	for i := 1; i &amp;lt;= 5; i++ {
+		fmt.Println(&amp;quot;meow &amp;quot;, i)
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Run the program now and you should see output from both the functions. So what exactly happened?&lt;/p&gt;
+&lt;p&gt;I personally find this very easy to understand by imagining a waiting list. Before launching our &lt;code&gt;woof&lt;/code&gt; function, we added &lt;code&gt;1&lt;/code&gt; thing to the waiting list. Then the program launched a goroutine for the execution of &lt;code&gt;woof&lt;/code&gt; and moved on to the next instruction which was to execute &lt;code&gt;meow&lt;/code&gt;. But this time instead of ending it saw &lt;code&gt;wg.Wait()&lt;/code&gt; which instructed it to wait until the waiting list was empty. And if you notice carefully, in our &lt;code&gt;woof&lt;/code&gt; function we added &lt;code&gt;wg.Done()&lt;/code&gt; which basically tells the program that this process is now done and you can take this out of the waiting list!&lt;/p&gt;
+&lt;p&gt;I hope that makes sense and you now have a much better idea of what concurrency is and how it works in golang. Over the next set of articles, I&amp;rsquo;ll try to explain other concepts surrounding it with a lot more examples so keep an eye out for those if you found this one interesting :)&lt;/p&gt;
+&lt;p&gt;Thanks for reading!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Pod Health With Liveness Probes</title>
+      <link>https://arshsharma.com/posts/2021-05-13-pod-health-with-liveness-probes/</link>
+      <pubDate>Thu, 13 May 2021 20:12:05 +0530</pubDate>
+      
+      <guid>https://arshsharma.com/posts/2021-05-13-pod-health-with-liveness-probes/</guid>
+      <description>&lt;p&gt;Kubernetes relies on &lt;a href=&#34;https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/&#34;&gt;Probes&lt;/a&gt; to determine the health of a Pod container. A probe can be understood simply as a periodical diagnostic performed by the &lt;a href=&#34;https://dev.to/rinkiyakedad/introduction-to-kubernetes-55o7&#34;&gt;kubelet&lt;/a&gt; on the container.&lt;/p&gt;
+&lt;p&gt;In this short article, I&amp;rsquo;m going to show you a liveness probe in action. Liveness probes are used to check if a Pod is healthy (running as expected) or not. It simply acts as a check for Kubernetes to know when it should restart the container.&lt;/p&gt;
+&lt;h2 id=&#34;without-liveness-probe&#34;&gt;Without Liveness Probe&lt;/h2&gt;
+&lt;p&gt;Let us create a simple nginx pod and see what happens when we mess with it without using a Liveness probe. Use the following configuration to create your pod:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: v1
+kind: Pod
+metadata:
+  name: my-nginx
+spec:
+  containers:
+    - name: my-nginx-container
+      image: nginx:alpine
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;If we port-forward this container we will notice that it is serving the nginx starter page. Ideally, for this case, we would want Kubernetes to restart this pod if we are not able to reach this page. Let us see if that is the case currently or not.&lt;/p&gt;
+&lt;p&gt;Launch a shell inside the container using &lt;a href=&#34;http://rinkiyakedad.github.io/kubectl-exec-is-so-cool&#34;&gt;kubectl exec&lt;/a&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubectl exec my-nginx -it sh
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Then navigate to the directory which has the HTML file responsible for the nginx starter page:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cd /usr/share/nginx/html
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Do a &lt;code&gt;ls&lt;/code&gt; here and you&amp;rsquo;ll see the following output:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;50x.html    index.html
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now let us delete this &lt;code&gt;index.html&lt;/code&gt; file:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;rm -rf index.html
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Return to your original shell by typing &lt;code&gt;exit&lt;/code&gt; in the current one.&lt;/p&gt;
+&lt;p&gt;Now do &lt;code&gt;kubectl get pods&lt;/code&gt;. You will see that even though our pod is now not functioning as expected (because we deleted the index.html file), Kubernetes has still not restarted the pod. And to be honest that shouldn&amp;rsquo;t be a surprise. Why would Kubernetes know that we care about that particular &lt;code&gt;index.html&lt;/code&gt; file unless we explicitly tell it?&lt;/p&gt;
+&lt;h2 id=&#34;enter-the-liveness-probe&#34;&gt;Enter the Liveness Probe&lt;/h2&gt;
+&lt;p&gt;This is where the Liveness Probe comes to the rescue. Update your pod configuration with this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: v1
+kind: Pod
+metadata:
+  name: my-nginx
+spec:
+  containers:
+    - name: my-nginx-container
+      image: nginx:alpine
+      livenessProbe:
+        httpGet:
+            path: /index.html
+            port: 80
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;You&amp;rsquo;ll need to delete your previous pod before creating a new one using this config.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Now repeat the same steps and delete the &lt;code&gt;index.html&lt;/code&gt; file again. This time after deleting the index.html file don&amp;rsquo;t immediately type &lt;code&gt;exit&lt;/code&gt; to leave the shell, instead, wait about 10 secs (which is the default time gap for regular checks) and you automatically exit the terminal. This is because the container inside which we had opened our terminal got restarted.&lt;/p&gt;
+&lt;p&gt;You can verify this by running &lt;code&gt;kubectl get pods&lt;/code&gt; and you should see something like:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;NAME       READY   STATUS    RESTARTS   AGE
+my-nginx   1/1     Running   1          4m24s
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The 1 in the restarts column confirms that the &lt;strong&gt;container&lt;/strong&gt; in our pod got restarted.&lt;/p&gt;
+&lt;p&gt;So what exactly did the liveness probe do here?
+The &lt;code&gt;httpGet&lt;/code&gt; action sent a GET request to the container. We told the liveness probe to check for &lt;code&gt;index.html&lt;/code&gt; on port 80 and if we don&amp;rsquo;t get a valid status code for our request then restart the pod.&lt;/p&gt;
+&lt;p&gt;This is useful for checking containers running an API or something like nginx serving static files.&lt;/p&gt;
+&lt;p&gt;This was it for this article. Hope you liked it and thanks for reading :)&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>kubectl exec Is So Cool!</title>
+      <link>https://arshsharma.com/posts/2021-04-29-kubectl-exec-is-so-cool/</link>
+      <pubDate>Thu, 29 Apr 2021 20:12:05 +0530</pubDate>
+      
+      <guid>https://arshsharma.com/posts/2021-04-29-kubectl-exec-is-so-cool/</guid>
+      <description>&lt;p&gt;I recently learned about &lt;code&gt;kubectl port-forward&lt;/code&gt; and &lt;code&gt;kubectl exec&lt;/code&gt;, and I was amazed by what simple but cool stuff you could o with just these two commands when getting started with Kubernetes. So that&amp;rsquo;s what this post is going to be about.&lt;/p&gt;
+&lt;h2 id=&#34;running-our-pod&#34;&gt;Running Our Pod&lt;/h2&gt;
+&lt;p&gt;I&amp;rsquo;m going to use &lt;code&gt;minikube&lt;/code&gt; to launch my cluster but feel free to use whatever you like. Once you have your cluster up and running (using &lt;code&gt;minikube start&lt;/code&gt;), create a nginx pod using:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubectl run my-nginx --image=nginx:alpine
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You can confirm your pod is running successfully by running &lt;code&gt;kubectl get pods&lt;/code&gt; and seeing the &lt;code&gt;STATUS&lt;/code&gt; column.&lt;/p&gt;
+&lt;h2 id=&#34;kubectl-port-forward&#34;&gt;kubectl port-forward&lt;/h2&gt;
+&lt;p&gt;Nginx runs on port 80 inside a container. But if you try to go to &lt;code&gt;localhost:80&lt;/code&gt; (or simply &lt;code&gt;localhost&lt;/code&gt; since &lt;code&gt;80&lt;/code&gt; is the default port) you will not see anything.&lt;/p&gt;
+&lt;p&gt;This is expected because we never exposed an external port by which we can reach the Nginx container. We need to kind of &lt;em&gt;poke a hole&lt;/em&gt; into our k8s cluster to expose a port that we can call in the browser which then calls into our Nginx container in the pod.&lt;/p&gt;
+&lt;p&gt;This is where &lt;code&gt;kubectl port-forward&lt;/code&gt; will help us. Run&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubectl port-forward my-nginx 8080:80
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;A bit of explanation:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;my-nginx&lt;/code&gt; is simply the pod name.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;8080&lt;/code&gt; is the external port we want to use (you can use any other available port here)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;80&lt;/code&gt; is the port we know Nginx runs on inside the pod (in that pod&amp;rsquo;s container).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Now go to &lt;code&gt;localhost:8080&lt;/code&gt; and you&amp;rsquo;ll see the default Nginx starter page! 😁&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://arshsharma.com/2021-04-29-1.png&#34; alt=&#34;nginx starter page&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;We needed to do the &lt;code&gt;port-forward&lt;/code&gt; because the IP address the pod is being assigned inside the cluster is not accessible by default, and it is the port forward which makes it so.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Your console would be locked after running that command and you can unlock it by pressing &lt;code&gt;ctrl+C&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;kubectl-exec&#34;&gt;kubectl exec&lt;/h2&gt;
+&lt;p&gt;Now we&amp;rsquo;re gonna mess with the Nginx default home page you just saw 😈&lt;/p&gt;
+&lt;p&gt;Our pod is running a container that is based on the Nginx image. Nginx serves its default page from the &lt;code&gt;index.html&lt;/code&gt; file which is located in &lt;code&gt;/usr/share/nginx/html&lt;/code&gt; directory of the container.&lt;/p&gt;
+&lt;p&gt;We will edit this file by using &lt;code&gt;kubectl exec&lt;/code&gt; which will provide us with a shell inside the running container.&lt;/p&gt;
+&lt;p&gt;We will also be using the &lt;code&gt;-i&lt;/code&gt; and &lt;code&gt;-t&lt;/code&gt; flags with it.&lt;/p&gt;
+&lt;p&gt;These two flags combined (&lt;code&gt;-it&lt;/code&gt;) allow us to execute commands inside the container but from our own terminal. This means if you running something like &lt;code&gt;ls&lt;/code&gt; you will see the files in the container and not on your system where the terminal is actually running. You can read more about them &lt;a href=&#34;https://stackoverflow.com/questions/22272401/what-does-it-mean-to-attach-a-tty-std-in-out-to-dockers-or-lxc&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;You can also learn more about the flags it supports &lt;a href=&#34;https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#exec&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;With that out of the way run the following command:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubectl exec my-nginx -it sh
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;sh&lt;/code&gt; is the first command we run inside our container. It is the command name of the &lt;a href=&#34;https://superuser.com/a/97617&#34;&gt;Bourne shell&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This should now give us access to a shell inside our container which is running Nginx. Let us now navigate to the folder containing our &lt;code&gt;index.html&lt;/code&gt; file:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cd /usr/share/nginx/html
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Type &lt;code&gt;ls&lt;/code&gt; here and you&amp;rsquo;ll see the following files:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;50x.html index.html
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Let us now edit our &lt;code&gt;index.html&lt;/code&gt; file using vim. Run:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vi index.html
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Press &lt;code&gt;i&lt;/code&gt; to enter the insert mode in vim which will allow you to make changes to the file. Navigate to the &lt;code&gt;style&lt;/code&gt; block and inside body add the following CSS:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;color: blue;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Then go down below and replace the &amp;ldquo;Welcome to nginx!&amp;rdquo; written in the &lt;code&gt;h1&lt;/code&gt; tags with anything you&amp;rsquo;d like. Once you&amp;rsquo;re done making changes press &lt;code&gt;esc&lt;/code&gt; to leave this editing mode.&lt;/p&gt;
+&lt;p&gt;Type &lt;code&gt;:wq&lt;/code&gt; (write and quit) and press enter to save this file. Type &lt;code&gt;exit&lt;/code&gt; to leave this shell inside our container and return to your original shell. Now let&amp;rsquo;s run the port-forward command:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubectl port-forward my-nginx 8080:80
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;and visit &lt;code&gt;localhost:8080&lt;/code&gt;. You should now see your changes in effect :)&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://arshsharma.com/2021-04-29-2.png&#34; alt=&#34;edited nginx starter page&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;And this was it for this post! I was pretty amazed when I learned to do this with just these two simple &lt;code&gt;kubectl&lt;/code&gt; subcommands. I always find doing something to see the commands in practice much more useful than simply reading about them so I thought of sharing this with you all. I hope you found this post interesting. Thanks for reading! :D&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Creating A CLI In Golang</title>
+      <link>https://arshsharma.com/posts/2021-04-17-creating-a-cli-in-golang/</link>
+      <pubDate>Sat, 17 Apr 2021 20:12:05 +0530</pubDate>
+      
+      <guid>https://arshsharma.com/posts/2021-04-17-creating-a-cli-in-golang/</guid>
+      <description>&lt;p&gt;This is &lt;em&gt;technically&lt;/em&gt; the first post on my blog so I&amp;rsquo;m pretty excited to write this one 😄&lt;/p&gt;
+&lt;p&gt;For the last few months, I&amp;rsquo;ve been working on &lt;a href=&#34;https://github.com/kubernetes-sigs/depstat&#34;&gt;depstat&lt;/a&gt;, which is a command-line tool to analyze dependencies, as part of my CNCF Internship. I&amp;rsquo;ve had a blast working on this especially because of the welcoming community. &lt;a href=&#34;https://github.com/kubernetes-sigs/depstat&#34;&gt;depstat&lt;/a&gt; is going to be used to evaluate dependency updates to Kubernetes and has been written in Go so I thought about sharing some stuff I learned :D&lt;/p&gt;
+&lt;h2 id=&#34;the-tools&#34;&gt;The Tools&lt;/h2&gt;
+&lt;p&gt;We&amp;rsquo;re going to use &lt;a href=&#34;https://github.com/spf13/cobra&#34;&gt;Cobra&lt;/a&gt; to create our CLI. If you want to create a CLI in Golang, trust me, Cobra is the way to &lt;em&gt;GO&lt;/em&gt;. The fact that it is used in the &lt;a href=&#34;https://github.com/kubernetes/kubernetes/blob/master/go.mod#L83&#34;&gt;Kubernetes codebase&lt;/a&gt; should be enough proof of its awesomeness.&lt;/p&gt;
+&lt;p&gt;The simplest way to get started with Cobra is using the &lt;a href=&#34;https://github.com/spf13/cobra/blob/master/cobra/README.md#cobra-generator&#34;&gt;Cobra Generator&lt;/a&gt;. You can simply run&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;go get github.com/spf13/cobra/cobra
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;to get the cobra binary in your &lt;code&gt;$GOPATH/bin&lt;/code&gt; directory.&lt;/p&gt;
+&lt;p&gt;Run &lt;code&gt;cobra help&lt;/code&gt; from your terminal to verify that it was installed correctly. A common error you might get is:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;zsh: command not found: cobra
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This might be happening because zsh is not picking up the cobra binary from &lt;code&gt;$GOPATH/bin&lt;/code&gt;. To fix that open your &lt;code&gt;.zshrc&lt;/code&gt; file and add the following line:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;Note if you&amp;rsquo;re using bash instead of zsh you might need to edit the &lt;code&gt;.bash_profile&lt;/code&gt; file instead&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;You should now be good to go!&lt;/p&gt;
+&lt;p&gt;For the sake of this tutorial, we&amp;rsquo;re going to create a very simple &lt;code&gt;sound&lt;/code&gt; CLI. This will take either &amp;ldquo;dog&amp;rdquo; or &amp;ldquo;cat&amp;rdquo; as an argument and print the sound they make as the result.&lt;/p&gt;
+&lt;p&gt;Pretty useless but extremely simple for learning the basics. So let&amp;rsquo;s get started!&lt;/p&gt;
+&lt;h2 id=&#34;cobra-basics&#34;&gt;Cobra Basics&lt;/h2&gt;
+&lt;p&gt;We can start our cobra project using:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mkdir sound
+cd sound
+cobra init --pkg-name=sound
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This will set up a cobra project for us. The two important things which this sets up for us are:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;main.go&lt;/code&gt;: There isn&amp;rsquo;t a lot going on in this file. All it does is call the &lt;code&gt;execute&lt;/code&gt; method in the &lt;code&gt;cmd&lt;/code&gt; package.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cmd/root.go&lt;/code&gt;: For the sake of simplification replace the contents of your &lt;code&gt;root.go&lt;/code&gt; file with these:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;package cmd
+
+import (
+ &amp;quot;github.com/spf13/cobra&amp;quot;
+)
+
+// rootCmd represents the base command when called without any subcommands
+var rootCmd = &amp;amp;cobra.Command{
+ Use: &amp;quot;sound&amp;quot;,
+ Short: &amp;quot;A brief description of your application&amp;quot;,
+ Long: `A longer description that spans multiple lines and likely contains
+examples and usage of using your application. For example:
+
+Cobra is a CLI library for Go that empowers applications.
+This application is a tool to generate the needed files
+to quickly create a Cobra application.`,
+ // Run: func(cmd *cobra.Command, args []string) { },
+}
+
+func Execute() {
+ cobra.CheckErr(rootCmd.Execute())
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now, this is much easier to explain :)&lt;/p&gt;
+&lt;p&gt;In &lt;code&gt;Use&lt;/code&gt; we specify the name of the command/sub-command. Currently, we only have our base command, &lt;code&gt;sound&lt;/code&gt; without any subcommands. The &lt;code&gt;Short&lt;/code&gt; and &lt;code&gt;Long&lt;/code&gt; fields are used by cobra to generate &lt;code&gt;help&lt;/code&gt; for our commands.&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s now try this out!&lt;/p&gt;
+&lt;h2 id=&#34;running-the-cli&#34;&gt;Running The CLI&lt;/h2&gt;
+&lt;p&gt;Before installing, run &lt;code&gt;go mod init sound&lt;/code&gt; to initialize go modules for the project. Then run &lt;code&gt;go mod tidy&lt;/code&gt; to generate the &lt;code&gt;go.sum&lt;/code&gt; file. Once this is done simply run,&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;go install
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;to install your CLI.&lt;/p&gt;
+&lt;p&gt;To test it out, run
+&lt;code&gt;sound&lt;/code&gt;
+and you should see the following output:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;A longer description that spans multiple lines and likely contains
+examples and usage of using your application. For example:
+
+Cobra is a CLI library for Go that empowers applications.
+This application is a tool to generate the needed files
+to quickly create a Cobra application.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;If you haven&amp;rsquo;t already noticed, this is the same text present by default in the &lt;code&gt;Long&lt;/code&gt; field. Currently, the base command does nothing so running it just prints the help for it. Let&amp;rsquo;s change this behavior now.&lt;/p&gt;
+&lt;h2 id=&#34;adding-some-logic&#34;&gt;Adding Some Logic&lt;/h2&gt;
+&lt;p&gt;We now want our command to take an argument from the user and then print something based on that. For that functionality, the code is pretty simple:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// rootCmd represents the base command when called without any subcommands
+var rootCmd = &amp;amp;cobra.Command{
+	Use:   &amp;quot;sound&amp;quot;,
+	Short: &amp;quot;A brief description of your application&amp;quot;,
+	Long: `A longer description that spans multiple lines and likely contains
+examples and usage of using your application. For example:
+
+Cobra is a CLI library for Go that empowers applications.
+This application is a tool to generate the needed files
+to quickly create a Cobra application.`,
+	Run: func(cmd *cobra.Command, args []string) {
+		if len(args) == 0 {
+			log.Fatal(&amp;quot;please provide a pet&amp;quot;)
+		}
+		if args[0] == &amp;quot;dog&amp;quot; {
+			fmt.Println(&amp;quot;wooooof!&amp;quot;)
+		} else if args[0] == &amp;quot;cat&amp;quot; {
+			fmt.Println(&amp;quot;meoooow!&amp;quot;)
+		} else {
+			fmt.Println(&amp;quot;sorry your pet is currently not supported :(&amp;quot;)
+		}
+	},
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;What we have done should be pretty straightforward to understand. Basically, Cobra gives us access to anything the user entered after the command (or subcommand) in form of the &lt;code&gt;args&lt;/code&gt; slice. We can then check the animal type and print our result accordingly. Pretty simple! :)&lt;/p&gt;
+&lt;p&gt;To see each change you make take place in effect, you&amp;rsquo;ll have to run &lt;code&gt;go install&lt;/code&gt; again to update your binary. Do that and test out your sound CLI!&lt;/p&gt;
+&lt;p&gt;Well, that was it folks! I know there is a lot to cover when it comes to Cobra but I just wanted to show you how easy it is to create a simple command-line tool with it. If you&amp;rsquo;re interested in learning more about it, I highly recommend you go check out the &lt;a href=&#34;https://cobra.dev&#34;&gt;official docs&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>To New Beginnings!</title>
       <link>https://arshsharma.com/posts/2021-04-14-to-new-beginnings/</link>
       <pubDate>Wed, 14 Apr 2021 20:12:05 +0530</pubDate>
       
       <guid>https://arshsharma.com/posts/2021-04-14-to-new-beginnings/</guid>
-      <description>Hey folks! I&amp;rsquo;ve finally set up my own blog (yaaaaaay!). I was looking at ways to import the articles from my Dev.to but it seems like there is no easy way to go about it and I can&amp;rsquo;t find the mental strength to copy-paste all 14 articles I&amp;rsquo;ve written till now.
-From now on, I will be posting all articles here first and then cross posting them to Dev.to (maybe Medium too).</description>
+      <description>&lt;p&gt;Hey folks! I&amp;rsquo;ve finally set up my own blog (yaaaaaay!). I was looking at ways to import the articles from my &lt;a href=&#34;https://dev.to/rinkiyakedad&#34;&gt;Dev.to&lt;/a&gt; but it seems like there is no easy way to go about it and I can&amp;rsquo;t find the mental strength to copy-paste all 14 articles I&amp;rsquo;ve written till now.&lt;/p&gt;
+&lt;p&gt;From now on, I will be posting all articles here first and then cross posting them to &lt;a href=&#34;https://dev.to/rinkiyakedad&#34;&gt;Dev.to&lt;/a&gt; (maybe &lt;a href=&#34;https://medium.com/@rinkiyakedad&#34;&gt;Medium&lt;/a&gt; too). In case you are interested in reading the previous ones, here are their links:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://dev.to/rinkiyakedad/introduction-to-terraform-545n&#34;&gt;Introduction To Terraform&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://dev.to/rinkiyakedad/introduction-to-kubernetes-55o7&#34;&gt;Kool Kubernetes&lt;/a&gt; - A four-part article series&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://dev.to/rinkiyakedad/introduction-to-docker-1hp2&#34;&gt;Demisityfuing Docker&lt;/a&gt; -  A six-part article series&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://dev.to/rinkiyakedad/kyverno-simplify-managing-k8s-clusters-2kej&#34;&gt;Kyverno - Simplify Managing K8s Clusters&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://dev.to/rinkiyakedad/how-to-connect-your-graphback-project-to-mongodb-atlas-5aa8&#34;&gt;How to connect your Graphback project to MongoDB Atlas&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://dev.to/rinkiyakedad/creating-an-add-event-to-google-calendar-link-for-your-project-52c1&#34;&gt;Creating an Add Event to Google Calendar Link for Your Project&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Stay safe and do awesome stuff! :D&lt;/p&gt;
+</description>
     </item>
     
   </channel>
