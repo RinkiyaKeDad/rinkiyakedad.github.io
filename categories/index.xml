@@ -10,6 +10,51 @@
     
     
     <item>
+      <title>So What Even Is This Cloud Computing?</title>
+      <link>https://arshsharma.com/posts/2021-09-24-so-what-even-is-this-cloud-computing/</link>
+      <pubDate>Fri, 24 Sep 2021 00:00:00 +0530</pubDate>
+      
+      <guid>https://arshsharma.com/posts/2021-09-24-so-what-even-is-this-cloud-computing/</guid>
+      <description>&lt;p&gt;Cloud computing is what everybody seems to be talking about these days? But what does it even mean? In this short article, I&amp;rsquo;ll go over what it is and the different types of cloud deployment and delivery models.&lt;/p&gt;
+&lt;h2 id=&#34;what-is-cloud-computing&#34;&gt;What is Cloud Computing?&lt;/h2&gt;
+&lt;p&gt;Earlier to host applications you would have to rent or build data centers where you would store the hardware which would run your servers.&lt;/p&gt;
+&lt;p&gt;Cloud computing simply refers to using computing resources on demand without directly managing them. So instead of building data centers and buying hardware to run your apps you simply rent compute power and use that to suit your needs. Who do you rent it from? Let&amp;rsquo;s get to that later in the &lt;a href=&#34;#cloud-delivery-models&#34;&gt;cloud delivery models&lt;/a&gt; section.&lt;/p&gt;
+&lt;p&gt;The biggest advantage of cloud computing is that instead of spending the cost of running an entire data center you only pay for the power you need. This also includes scaling up and down based on your needs. All you need to do is connect with your cloud provider and from their provided console change the resources you&amp;rsquo;re using.&lt;/p&gt;
+&lt;p&gt;Behind the scenes, these cloud providers are still running and maintaining data centers of their own but that&amp;rsquo;s none of your headache now. You just request the resources you need and you&amp;rsquo;ll be provided with them from a shared pool of resources that they maintain. Once you&amp;rsquo;re done using them those resources go back to this shared pool.&lt;/p&gt;
+&lt;p&gt;Now that we have an idea of what cloud computing is let&amp;rsquo;s see what different types of cloud deployments are available.&lt;/p&gt;
+&lt;h2 id=&#34;types-of-cloud-deployments&#34;&gt;Types of Cloud Deployments&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Private: Like the name suggests Private cloud means that the hardware on which your cloud runs is owned by you or your organization.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Public: Public cloud means that the hardware isn&amp;rsquo;t owned by you and the organization which owns this hardware provides you access to the computing power you pay them for.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Community: It is kind of like Public cloud, but it differs in the fact that access to the computing power is only allowed to a particular group of organizations or people who belong to a particular community.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Multicloud: This means you&amp;rsquo;re using resources from two or more public clouds or two or more private clouds.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Hybrid: Hybrid clouds allow you to use resources offered by both private and public clouds.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;There isn&amp;rsquo;t any one best approach as such. Private clouds offer more security since the resources are provisioned for use by a single organization. The computing resources are not &lt;strong&gt;multitenant&lt;/strong&gt;, meaning that systems are not shared while provisioned.&lt;/p&gt;
+&lt;p&gt;Public clouds provide resources that are generally multitenant, meaning they are shared between different users. When one user is done using the resources they are added back to the shared pool and are available for other users. These are much more cost-effective and easier to manage since you don&amp;rsquo;t have to maintain any hardware. Security these days is almost as close to that provided by private clouds.&lt;/p&gt;
+&lt;p&gt;Multicloud uses the cloud platforms of multiple cloud providers. So it&amp;rsquo;s when you use a mix of &lt;a href=&#34;https://aws.amazon.com/&#34;&gt;AWS&lt;/a&gt;, &lt;a href=&#34;https://azure.microsoft.com/&#34;&gt;Azure&lt;/a&gt;, &lt;a href=&#34;https://cloud.google.com/&#34;&gt;GCP&lt;/a&gt;, or other cloud providers. The reason you&amp;rsquo;d want to do this is that some cloud providers might be better than others at certain types of services. It also ensures that you aren&amp;rsquo;t solely dependent on a single cloud provider. However, this does mean that setting them up ends up being a bit more complicated than using a single cloud provider.&lt;/p&gt;
+&lt;h2 id=&#34;cloud-delivery-models&#34;&gt;Cloud Delivery Models&lt;/h2&gt;
+&lt;h3 id=&#34;software-as-a-service-saas&#34;&gt;Software as a Service (SaaS)&lt;/h3&gt;
+&lt;p&gt;In the SaaS model, a company hosts the application you need and provides it for you. The SaaS provider may internally use any model for the compute resources they need in order to provide you with their software. An example to make this clear is Google Workspace. Google Workspace features many SaaS productivity applications like Gmail, Calendar, Docs, etc. They make lives easier compared to the non-cloud alternatives since users now don&amp;rsquo;t have to buy the hardware and software to support an on-premise business application.&lt;/p&gt;
+&lt;h3 id=&#34;infrastructure-as-a-service-iaas&#34;&gt;Infrastructure as a Service (IaaS)&lt;/h3&gt;
+&lt;p&gt;This model refers to using the compute resources traditionally found in an organization&amp;rsquo;s own data center over the internet. What this basically means is that someone will host the hardware for you and provide you access to the computing power over the internet. &lt;a href=&#34;https://aws.amazon.com/&#34;&gt;AWS&lt;/a&gt;, &lt;a href=&#34;https://cloud.google.com/&#34;&gt;GCP&lt;/a&gt;, and &lt;a href=&#34;https://azure.microsoft.com/&#34;&gt;Azure&lt;/a&gt; are examples of IaaS clouds. The main benefit they provide is that you don&amp;rsquo;t need to buy the hardware and you pay only for the resources that you use.&lt;/p&gt;
+&lt;h3 id=&#34;platform-as-a-service-paas&#34;&gt;Platform as a Service (PaaS)&lt;/h3&gt;
+&lt;p&gt;Under the PaaS model, a company provides the tools needed for application development, testing, and deployment to users over the internet. These days most PaaS solutions support IaaS cloud providers. For example, &lt;a href=&#34;https://aws.amazon.com/elasticbeanstalk/&#34;&gt;Amazon Web Services Elastic Beanstalk&lt;/a&gt; is a PaaS cloud that runs inside an IaaS cloud, that is, &lt;a href=&#34;https://aws.amazon.com/&#34;&gt;AWS&lt;/a&gt;. PaaS offerings increase developer productivity by providing abstraction from the complexities of development environments.&lt;/p&gt;
+&lt;p&gt;So this was it for this article and I hope you now have more clarity on what cloud computing means and the various cloud computing models available. If you&amp;rsquo;ve any questions or feedback, please feel free to reach out to me on &lt;a href=&#34;https://twitter.com/RinkiyaKeDad&#34;&gt;Twitter&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Random Bash</title>
       <link>https://arshsharma.com/posts/2021-07-19-random-bash/</link>
       <pubDate>Mon, 19 Jul 2021 20:12:05 +0530</pubDate>
@@ -648,16 +693,6 @@ to quickly create a Cobra application.`,
 &lt;li&gt;&lt;a href=&#34;https://dev.to/rinkiyakedad/creating-an-add-event-to-google-calendar-link-for-your-project-52c1&#34;&gt;Creating an Add Event to Google Calendar Link for Your Project&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Stay safe and do awesome stuff! :D&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Talks</title>
-      <link>https://arshsharma.com/talks/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://arshsharma.com/talks/</guid>
-      <description>&lt;p&gt;I enjoy speaking at conferences and taking workshops. This page lists some of the events I&amp;rsquo;ve spoken at.&lt;/p&gt;
 </description>
     </item>
     

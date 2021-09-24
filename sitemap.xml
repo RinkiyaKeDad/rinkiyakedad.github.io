@@ -3,7 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://arshsharma.com/</loc>
-    <lastmod>2021-07-19T20:12:05+05:30</lastmod>
+    <lastmod>2021-09-24T00:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://arshsharma.com/tags/cloud/</loc>
+    <lastmod>2021-09-24T00:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://arshsharma.com/tags/devops/</loc>
+    <lastmod>2021-09-24T00:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://arshsharma.com/posts/</loc>
+    <lastmod>2021-09-24T00:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://arshsharma.com/posts/2021-09-24-so-what-even-is-this-cloud-computing/</loc>
+    <lastmod>2021-09-24T00:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://arshsharma.com/tags/</loc>
+    <lastmod>2021-09-24T00:00:00+05:30</lastmod>
   </url><url>
     <loc>https://arshsharma.com/tags/bash/</loc>
     <lastmod>2021-07-19T20:12:05+05:30</lastmod>
@@ -11,13 +26,7 @@
     <loc>https://arshsharma.com/tags/linux/</loc>
     <lastmod>2021-07-19T20:12:05+05:30</lastmod>
   </url><url>
-    <loc>https://arshsharma.com/posts/</loc>
-    <lastmod>2021-07-19T20:12:05+05:30</lastmod>
-  </url><url>
     <loc>https://arshsharma.com/posts/2021-07-19-random-bash/</loc>
-    <lastmod>2021-07-19T20:12:05+05:30</lastmod>
-  </url><url>
-    <loc>https://arshsharma.com/tags/</loc>
     <lastmod>2021-07-19T20:12:05+05:30</lastmod>
   </url><url>
     <loc>https://arshsharma.com/tags/eks/</loc>
