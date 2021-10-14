@@ -5,10 +5,59 @@
     <link>https://arshsharma.com/</link>
     <description>Recent content in devops on Arsh Sharma</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 02 Oct 2021 00:00:00 +0530</lastBuildDate>
+    <lastBuildDate>Thu, 14 Oct 2021 00:00:00 +0530</lastBuildDate>
     
 	<atom:link href="https://arshsharma.com/tags/devops/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Getting Started With AWS EC2</title>
+      <link>https://arshsharma.com/posts/2021-10-14-getting-started-with-aws-ec2/</link>
+      <pubDate>Thu, 14 Oct 2021 00:00:00 +0530</pubDate>
+      
+      <guid>https://arshsharma.com/posts/2021-10-14-getting-started-with-aws-ec2/</guid>
+      <description>&lt;p&gt;In the &lt;a href=&#34;https://arshsharma.com/posts/2021-10-02-introduction-to-aws-iaas/&#34;&gt;previous post&lt;/a&gt;, we talked briefly about EC2. In this post, we&amp;rsquo;ll explore it in a bit more detail. We&amp;rsquo;ll launch an instance and use it to run an nginx web server which will be accessible from anywhere using a URL. So without further ado, let&amp;rsquo;s get started :)&lt;/p&gt;
+&lt;p&gt;Search for &amp;ldquo;EC2&amp;rdquo; in the AWS search bar. From there click the &amp;ldquo;Launch Instance&amp;rdquo; button. Now you would see a screen to choose an AMI. AMIs (Amazon Machine Images) are nothing but virtual machine images. For this blog, we&amp;rsquo;re going to select the &amp;ldquo;Amazon Linux 2 AMI (HVM), SSD Volume Type&amp;rdquo; with the x86 option. On the &amp;ldquo;Instance Type&amp;rdquo; screen we select the kind of hardware we want to be allocated to our VM. This is basically like choosing the configuration (CPU, RAM, etc) for our computer which would act as the server. Let&amp;rsquo;s go with &amp;ldquo;t2.micro&amp;rdquo; here. From here click on &amp;ldquo;Review and Launch&amp;rdquo; and finally on the next screen click on &amp;ldquo;Launch&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Now to connect to this instance through SSH we&amp;rsquo;ll need to create a key pair that acts sort of like a password to access this instance. In the first pulldown on the popup, you see click on &amp;ldquo;Create a new key pair&amp;rdquo; and let&amp;rsquo;s keep the name as &amp;ldquo;ec2demo&amp;rdquo;. Then click the &amp;ldquo;Download Key Pair&amp;rdquo; button and finally click the &amp;ldquo;Launch Instances&amp;rdquo; button.  On the next screen, click on &amp;ldquo;View Instances&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Once you confirm that the &amp;ldquo;Instance state&amp;rdquo; is &amp;ldquo;Running&amp;rdquo;, click on the checkbox in the first column for this instance and then click on &amp;ldquo;Connect&amp;rdquo; in the top bar. Go to the &amp;ldquo;SSH client&amp;rdquo; and if you follow the instructions there you should have SSH access to your instance.&lt;/p&gt;
+&lt;p&gt;What this basically did was use the encoded private key we downloaded to connect via SSH to the instance which already had the associated public key installed.&lt;/p&gt;
+&lt;p&gt;Now let&amp;rsquo;s install nginx on this machine. nginx is available from the AWS &amp;ldquo;Extras Repository&amp;rdquo;. You can confirm this by running&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;amazon-linux-extras list | grep nginx
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;To install it run&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo amazon-linux-extras install nginx1
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;We can verify that it was installed successfully by running&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;nginx -v
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Let us start the webserver by running&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo service nginx start
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You can also confirm that it&amp;rsquo;s running using&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo service nginx status
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Once the server is up let&amp;rsquo;s also confirm that we can see the nginx starter page from within this EC2 instance.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;curl localhost
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This should show you the HTML for the nginx starter page.&lt;/p&gt;
+&lt;p&gt;Alrighty, now that we have our EC2 instance all set up let&amp;rsquo;s head back to the AWS console. If you select we instance we&amp;rsquo;ll see information related to it on the bottom of our screen as shown in the below image.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://arshsharma.com/2021-10-14-1.png&#34; alt=&#34;instance info&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;The &amp;ldquo;Public IPv4 DNS&amp;rdquo; is the URL we can use to see the nginx starter page from any machine. So let&amp;rsquo;s click on that and see what happens.&lt;/p&gt;
+&lt;p&gt;Not what you expected right? :)&lt;/p&gt;
+&lt;p&gt;So why can&amp;rsquo;t we access this URL?&lt;/p&gt;
+&lt;p&gt;If you&amp;rsquo;ve run servers before you&amp;rsquo;d know that allowing unfiltered internet traffic to your server means exposing it to so many security threats. Amazon uses security groups to solve this. These act as firewalls that allow us to expose only the parts of our server that are configured for public internet traffic.&lt;/p&gt;
+&lt;p&gt;Since we didn&amp;rsquo;t configure our security groups while launching the EC2 instance Amazon assigned the standard security group to it. Click on the &amp;ldquo;Security&amp;rdquo; tab next to &amp;ldquo;Details&amp;rdquo; and then click on the link under &amp;ldquo;Security groups&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://arshsharma.com/2021-10-14-2.png&#34; alt=&#34;security groups&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;On the next screen, you will see one inbound and one outbound rule. The outbound rule allows our EC2 instance to communicate with anything on the internet. The inbound rule on the other hand says that anyone can connect to our instance using SSH. Click on the &amp;ldquo;Edit inbound rules&amp;rdquo; button to add another inbound rule.&lt;/p&gt;
+&lt;p&gt;We&amp;rsquo;ll add a rule to allow HTTP traffic from anywhere to our EC2 instance. Add the rule shown below and then click on &amp;ldquo;Save rules&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://arshsharma.com/2021-10-14-3.png&#34; alt=&#34;inbound rule&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;After doing this if you go to the previous URL you should see the nginx starter page :)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Please note that you should navigate to &lt;code&gt;http://&amp;lt;url&amp;gt;&lt;/code&gt; and not &lt;code&gt;https://&amp;lt;url&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Before we wrap up I want to show you one last thing. Just like we used the &amp;ldquo;Amazon Linux 2 AMI (HVM), SSD Volume Type&amp;rdquo; AMI for this EC2 instance, you can create an AMI from this instance. This would mean when you launch another instance using this created AMI you wouldn&amp;rsquo;t have to install nginx again. To do this select your instance and go to Actions &amp;gt; Image and templates &amp;gt; Create image. Just add an image name and leave everything else to its default values. Now once the AMI is ready and you navigate to the AMIs section using the nav menu on the left you should be able to launch an instance using this image.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://arshsharma.com/2021-10-14-4.png&#34; alt=&#34;ami image&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;So this was it for this article and I hope you now feel familiar enough with EC2 instances to go and play with them yourselves. Thanks for reading and like always please feel free to &lt;a href=&#34;https://arshsharma.com/&#34;&gt;reach out&lt;/a&gt; to me if you have any feedback or doubts :)&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Introduction To AWS IaaS</title>
