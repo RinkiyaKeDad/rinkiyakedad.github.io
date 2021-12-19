@@ -21,17 +21,17 @@
 &lt;p&gt;Once you confirm that the &amp;ldquo;Instance state&amp;rdquo; is &amp;ldquo;Running&amp;rdquo;, click on the checkbox in the first column for this instance and then click on &amp;ldquo;Connect&amp;rdquo; in the top bar. Go to the &amp;ldquo;SSH client&amp;rdquo; and if you follow the instructions there you should have SSH access to your instance.&lt;/p&gt;
 &lt;p&gt;What this basically did was use the encoded private key we downloaded to connect via SSH to the instance which already had the associated public key installed.&lt;/p&gt;
 &lt;p&gt;Now let&amp;rsquo;s install nginx on this machine. nginx is available from the AWS &amp;ldquo;Extras Repository&amp;rdquo;. You can confirm this by running&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;amazon-linux-extras list | grep nginx
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;amazon-linux-extras list | grep nginx
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;To install it run&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo amazon-linux-extras install nginx1
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo amazon-linux-extras install nginx1
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;We can verify that it was installed successfully by running&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;nginx -v
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;nginx -v
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Let us start the webserver by running&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo service nginx start
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo service nginx start
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You can also confirm that it&amp;rsquo;s running using&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo service nginx status
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo service nginx status
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Once the server is up let&amp;rsquo;s also confirm that we can see the nginx starter page from within this EC2 instance.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;curl localhost
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;curl localhost
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This should show you the HTML for the nginx starter page.&lt;/p&gt;
 &lt;p&gt;Alrighty, now that we have our EC2 instance all set up let&amp;rsquo;s head back to the AWS console. If you select we instance we&amp;rsquo;ll see information related to it on the bottom of our screen as shown in the below image.&lt;/p&gt;
 &lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://arshsharma.com/2021-10-14-1.png&#34; alt=&#34;instance info&#34;  /&gt;
@@ -154,9 +154,9 @@ Deleting the entire AWS account&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;#!&lt;/code&gt; is called shebang. It gets its name because it is a combination of &amp;ldquo;sharp&amp;rdquo; (&lt;code&gt;#&lt;/code&gt;) and &amp;ldquo;bang&amp;rdquo; (&lt;code&gt;!&lt;/code&gt;). We start each script with a shebang and then the path to the interpreter.  This tells the shell what program to interpret the script with. In this case, we want the script to be run by the &lt;code&gt;bash&lt;/code&gt; interpreter so we specify the path to it.&lt;/p&gt;
 &lt;h2 id=&#34;something-interesting-about-ls--l&#34;&gt;Something Interesting About &lt;code&gt;ls -l&lt;/code&gt;&lt;/h2&gt;
 &lt;p&gt;When you do &lt;code&gt;ls -l&lt;/code&gt; you see something like this&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;-rw-r--r-- 1 arsh staff 19 Jul 21 11:57 file.sh
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;-rw-r--r-- 1 arsh staff 19 Jul 21 11:57 file.sh
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Let us break the first &amp;ldquo;word&amp;rdquo; and see what it means. Even before we do that here&amp;rsquo;s something you should know to understand what comes next,&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;r -&amp;gt; read
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;r -&amp;gt; read
 w -&amp;gt; write
 x -&amp;gt; execute
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You&amp;rsquo;ll notice that removing the first dash there are three sets each with three characters. Each of the sets in order of left to the right refers to permissions granted to the owner of the file, to the group of the file, and permissions available to everyone else on the system of the file respectively.&lt;/p&gt;
@@ -164,32 +164,32 @@ x -&amp;gt; execute
 &lt;h2 id=&#34;changing-permissions-which-chmod&#34;&gt;Changing permissions which &lt;code&gt;chmod&lt;/code&gt;&lt;/h2&gt;
 &lt;p&gt;If you want to change the permissions of a file (which we saw using &lt;code&gt;ls -l&lt;/code&gt;) you use &lt;code&gt;chmod&lt;/code&gt;. If you want the file to be executable by everyone but give write permissions to only the owner you can run, &lt;code&gt;chmod 755 &amp;lt;filelocation&amp;gt;&lt;/code&gt;. But where does this &lt;code&gt;755&lt;/code&gt; come from?&lt;/p&gt;
 &lt;p&gt;To understand that first take a note of these values&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;r (read) -&amp;gt; 4
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;r (read) -&amp;gt; 4
 w (write) -&amp;gt; 2
 x (execute) -&amp;gt; 1
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now let&amp;rsquo;s try to see a pattern :)&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;7 -&amp;gt; 4 + 2 + 1
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;7 -&amp;gt; 4 + 2 + 1
 5 -&amp;gt; 4 + 0 + 1
 5 -&amp;gt; 4 + 0 + 1
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Starting to make sense? The first row corresponds to the permissions the owner of the file would have, the second corresponds to the ones the group will have, and the third, corresponds to the permissions everyone else on the filesystem will have. You can create similar combinations as per your need to modify the file permissions.&lt;/p&gt;
 &lt;h2 id=&#34;some-basics-about-variables&#34;&gt;Some Basics About Variables&lt;/h2&gt;
 &lt;p&gt;Variables in bash can be directly assigned values without specifying any type like int, string, etc.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;VAR_NAME=&amp;quot;value&amp;quot;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;VAR_NAME=&amp;quot;value&amp;quot;
 VAR_NAME=5
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;To reference a variable we use a dollar sign along with its name, for example, &lt;code&gt;$VAR_NAME&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Single quotes prevent the expansion of variables whereas double don&amp;rsquo;t. For example,&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;echo &#39;$VAR_NAME is a variable&#39; -&amp;gt; $VAR_NAME is a variable
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;echo &#39;$VAR_NAME is a variable&#39; -&amp;gt; $VAR_NAME is a variable
 echo &amp;quot;$VAR_NAME is a variable&amp;quot; -&amp;gt; value is a variable (if VAR_NAME was set to &amp;quot;value&amp;quot;)
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;We can also place the variable name in &lt;code&gt;{}&lt;/code&gt; and precede the opening brace with &lt;code&gt;$&lt;/code&gt;. This is useful in cases like,&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;WORD=&amp;quot;talk&amp;quot;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;WORD=&amp;quot;talk&amp;quot;
 echo &amp;quot;${WORD}ing&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Output -&amp;gt; &amp;ldquo;talking&amp;rdquo;&lt;/p&gt;
 &lt;p&gt;Also, note that variable names are in upper case by &lt;strong&gt;convention&lt;/strong&gt; but this isn&amp;rsquo;t mandatory by bash.&lt;/p&gt;
 &lt;h2 id=&#34;something-about-commands&#34;&gt;Something About Commands&lt;/h2&gt;
 &lt;p&gt;If you&amp;rsquo;re not sure about some command, let&amp;rsquo;s say &lt;code&gt;head&lt;/code&gt; you can run &lt;code&gt;type -a head&lt;/code&gt; and you would see something like&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;head is /usr/bin/head
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;head is /usr/bin/head
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;On the other hand for some commands like &lt;code&gt;echo&lt;/code&gt; you would see something like,&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;echo is a shell builtin
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;echo is a shell builtin
 echo is /bin/echo
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;If a command is a shell builtin you can use &lt;code&gt;help &amp;lt;command&amp;gt;&lt;/code&gt; to get information about it. &lt;code&gt;help&lt;/code&gt; is a bash command which uses internal bash structures to store and retrieve information about bash commands.&lt;/p&gt;
 &lt;p&gt;If something isn&amp;rsquo;t a shell builtin, you can use the &lt;code&gt;man&lt;/code&gt; command to get information about it. Quoting directly from &lt;a href=&#34;https://unix.stackexchange.com/a/86584&#34;&gt;here&lt;/a&gt;,&lt;/p&gt;
@@ -198,12 +198,12 @@ echo is /bin/echo
 &lt;/blockquote&gt;
 &lt;p&gt;Every time we type something in the command line, bash first tries to find a function with that name to execute, if not found then it looks for that command in its list of built-in commands, if it&amp;rsquo;s not found even there then bash searches through the list of dirs defined in the &lt;code&gt;$PATH&lt;/code&gt; variable and executes the first match it finds. If still no match then it says command not found.&lt;/p&gt;
 &lt;p&gt;You can see the list of dirs it will search through by running &lt;code&gt;echo $PATH&lt;/code&gt;. You can also edit this &lt;code&gt;$PATH&lt;/code&gt; to add more dirs where it can look for commands. It goes through the colon-separated dirs defined in the &lt;code&gt;$PATH&lt;/code&gt; in order and as soon as it finds a match it stops there. If you want to see what gets executed when you run a command, you can run &lt;code&gt;which &amp;lt;command&amp;gt;&lt;/code&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;which depstat                                                      
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;which depstat                                                      
 /Users/arsh/go/bin/depstat
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This means instead of running &lt;a href=&#34;https://github.com/kubernetes-sigs/depstat&#34;&gt;depstat&lt;/a&gt; I could also have run &lt;code&gt;/Users/arsh/go/bin/depstat&lt;/code&gt;. If you do &lt;code&gt;which -a &amp;lt;command&amp;gt;&lt;/code&gt; then it will show you all instances it found of that command.&lt;/p&gt;
 &lt;p&gt;Another thing about commands is that you can combine their shorthands for flags. For example, &lt;code&gt;id -n -u&lt;/code&gt; can also be executed as &lt;code&gt;id -nu&lt;/code&gt; or &lt;code&gt;id -un&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;One last thing is that you can store the output of commands in a variable using the following syntax,&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;USER_NAME=$(id -un)
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;USER_NAME=$(id -un)
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Also, note that if the exit status of a command is 0 that means it executed successfully without any errors. Non-zero exit status always means something went wrong.&lt;/p&gt;
 &lt;p&gt;Well this was it for this article and I hope you learned some interesting linux-y things :)&lt;/p&gt;
 </description>
@@ -220,11 +220,11 @@ echo is /bin/echo
 &lt;p&gt;We are going to write a policy for Kyverno to check if the object being created in a namespace (dev or prod) has the right IAM role specified in its annotations or not. So let’s begin!&lt;/p&gt;
 &lt;h2 id=&#34;installing-kyverno&#34;&gt;Installing Kyverno&lt;/h2&gt;
 &lt;p&gt;The simplest way to install Kyverno on your cluster is by running:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;kubectl create -f https://raw.githubusercontent.com/kyverno/kyverno/main/definitions/release/install.yaml
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;kubectl create -f https://raw.githubusercontent.com/kyverno/kyverno/main/definitions/release/install.yaml
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;If you visit the &lt;a href=&#34;https://kyverno.io/docs/installation/&#34;&gt;Kyverno documentation&lt;/a&gt; you’ll see ways to install it using helm and ways to customize your installation of Kyverno.&lt;/p&gt;
 &lt;h2 id=&#34;creating-a-configmap&#34;&gt;Creating A ConfigMap&lt;/h2&gt;
 &lt;p&gt;Before we create the actual Kyverno policy let us first create a config map that will store the IAM roles for dev and prod environments. This can be done very simply using:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;kind: ConfigMap
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;kind: ConfigMap
 apiVersion: v1
 metadata:
   name: ns-roles-dictionary
@@ -235,7 +235,7 @@ data:
 
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;creating-the-kyverno-policy&#34;&gt;Creating The Kyverno Policy&lt;/h2&gt;
 &lt;p&gt;Now to the fun part - creating our Kyverno policy. Let us first look at the policy YAML file and then I’ll walk you through it. If this is your first time seeing a Kyverno policy don’t worry at all because one of the most beautiful things about Kyverno is how intuitive it is. It follows a very similar structure to the YAML files for Kubernetes objects.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;apiVersion: kyverno.io/v1
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;apiVersion: kyverno.io/v1
 kind: ClusterPolicy
 metadata:
   name: deployment-valid-role
@@ -274,7 +274,7 @@ spec:
 &lt;p&gt;Let’s begin from the spec section since everything prior to that is all the standard boilerplate stuff. The first thing in the spec section is &lt;code&gt;validationFaliureAction&lt;/code&gt; which we have set to &lt;code&gt;enforce&lt;/code&gt;. What this does is specify what should happen if this policy is violated by an object. Setting it to &lt;code&gt;enforce&lt;/code&gt; would make sure that the object which violates this policy does not get created whereas setting it to &lt;code&gt;audit&lt;/code&gt; will allow the object to get created but will report that violation.&lt;/p&gt;
 &lt;p&gt;Each Kyverno policy must have at least one rule which is what we define next. After specifying the name of the rule we specify the &lt;code&gt;configMap&lt;/code&gt; we created earlier. This is done using the &lt;code&gt;context&lt;/code&gt; key. We do this because it allows us to easily refer to values from this &lt;code&gt;configMap&lt;/code&gt; in our Kyverno policy, as you will see later.&lt;/p&gt;
 &lt;p&gt;Next up we specify the Kubernetes objects we want this policy to act on under the &lt;code&gt;resources&lt;/code&gt; key. Kyverno offers a lot of control over here. For example, you can choose deployments but add an exclude block which would tell Kyverno to not include some specific Deployments. Pretty cool right?&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;match:
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;match:
   resources:
     kinds:
     - Deployment
@@ -302,7 +302,7 @@ The first precondition simply states that the policy should not be applied if th
       <description>&lt;p&gt;This is the final post in my &amp;ldquo;Do You Concur?&amp;rdquo; series. If you&amp;rsquo;ve not checked the other two out it is highly recommended you do that before reading this one. With that out of the way let&amp;rsquo;s get started!&lt;/p&gt;
 &lt;h2 id=&#34;what-are-channels&#34;&gt;What Are Channels?&lt;/h2&gt;
 &lt;p&gt;A channel in Go can be best understood by comparing it with a box. It is a box where goroutines can put and take out the data. So essentially channels help your goroutines to share data. One goroutine can send a value into the channel and another goroutine can receive those values. A very simple code snippet demonstrating this is:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;package main
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;package main
 
 import &amp;quot;fmt&amp;quot;
 
@@ -316,7 +316,7 @@ func main() {
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;channels-are-blockers&#34;&gt;Channels Are Blockers!&lt;/h2&gt;
 &lt;p&gt;&amp;ldquo;Channels block a goroutine if there is no buffer space.&amp;rdquo;&lt;/p&gt;
 &lt;p&gt;A lot to explain in this one line. Let us first run some things. Trying running the following code:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;package main
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;package main
 
 import &amp;quot;fmt&amp;quot;
 
@@ -326,7 +326,7 @@ func main() {
 	fmt.Println(&amp;lt;-c)
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;It will give you an error. Now try running:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;package main
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;package main
 
 import &amp;quot;fmt&amp;quot;
 
@@ -342,7 +342,7 @@ func main() {
 &lt;p&gt;&amp;ldquo;Sending to a channel with no available buffer space blocks the sender until the send can complete; receiving from a channel with no available messages blocks the receiver until the receive can complete.&amp;rdquo;&lt;/p&gt;
 &lt;p&gt;Looking at the code which failed, there was only one goroutine, the main goroutine. So when it reached the &lt;code&gt;c &amp;lt;- 69&lt;/code&gt; line, it was blocked until some other goroutine received from c. But since there was no other goroutine it would remain blocked forever and that is why our code failed.&lt;/p&gt;
 &lt;p&gt;To fix this we could either launch a separate goroutine as shown in the initial code snippet or we could increase the buffer space to 1 as we did in the third code snippet. Increasing the buffer space to 1 basically told the channel that you can continue without blocking even if you have 1 value being sent to you with no one to receive it. So if we modify the third code snippet to as follows it will again not run as now we&amp;rsquo;re sending two values:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;package main
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;package main
 
 import &amp;quot;fmt&amp;quot;
 
@@ -381,7 +381,7 @@ func main() {
 &lt;p&gt;So now that you have an idea about what race conditions are, let us go and see them in action!&lt;/p&gt;
 &lt;h2 id=&#34;coding-our-race-condition&#34;&gt;Coding Our Race Condition&lt;/h2&gt;
 &lt;p&gt;Copy the following code in your &lt;code&gt;main.go&lt;/code&gt; file and then we&amp;rsquo;ll walk through it.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;package main
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;package main
 
 import (
 	&amp;quot;fmt&amp;quot;
@@ -424,7 +424,7 @@ func main() {
 &lt;h2 id=&#34;fixing-our-race-condition&#34;&gt;Fixing Our Race Condition&lt;/h2&gt;
 &lt;p&gt;Now that we&amp;rsquo;ve created a race condition, how do we fix it? We will be using a &lt;code&gt;Mutex&lt;/code&gt; to prevent the race condition. We know the data race occurs due to multiple goroutines accessing a shared variable. We can prevent this by sorta locking access to our &lt;code&gt;counter&lt;/code&gt; variable when one of the goroutines reads it and then unlocking it when it is done writing the incremented value. This way nobody else can use that variable when a particular goroutine is updating it. This is exactly what &lt;a href=&#34;https://golang.org/pkg/sync/#Mutex&#34;&gt;Mutex&lt;/a&gt; does.&lt;/p&gt;
 &lt;p&gt;With the above explanation I think you&amp;rsquo;ll now be able to make sense of the following update we made to our code:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;	const num = 15
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;	const num = 15
 	var wg sync.WaitGroup
 	wg.Add(num)
 
@@ -458,7 +458,7 @@ func main() {
 &lt;h2 id=&#34;concurrency-vs-parallelism&#34;&gt;Concurrency Vs Parallelism&lt;/h2&gt;
 &lt;p&gt;Before we start looking at some code, I think it would be better to know what concurrency actually is. But even before we do that let us first talk about parallelism because it is a word that often comes up when talking about concurrency.&lt;/p&gt;
 &lt;p&gt;In very simple terms parallelism can be understood as when two &lt;em&gt;instructions&lt;/em&gt; are executed in parallel, that is, simultaneously instead of the traditional way of sequential execution. &amp;ldquo;Instructions&amp;rdquo; is a loosely used word in that sentence and could have different meanings in different contexts. More often than not it means functions or methods. For example,  if you have this:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;func main(){
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;func main(){
     woof()
     meow()
 }
@@ -472,7 +472,7 @@ func main() {
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;concurrency-in-go&#34;&gt;Concurrency in Go&lt;/h2&gt;
 &lt;p&gt;So now that you have an idea of what concurrency is let us look at concurrency in Golang. I&amp;rsquo;m going to try and keep this as simple as possible. Let me expand on the code shown above. Let us say we have the following &lt;code&gt;main.go&lt;/code&gt; file:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;package main
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;package main
 
 import (
 	&amp;quot;fmt&amp;quot;
@@ -495,7 +495,7 @@ func meow() {
 	}
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Right now the instructions in the main function would execute sequentially. So first &lt;code&gt;woof&lt;/code&gt; will be called and when it returns then and only then will &lt;code&gt;meow&lt;/code&gt; be called. To &lt;em&gt;enable&lt;/em&gt; parallel execution we use the &lt;code&gt;go&lt;/code&gt; keyword right before the instruction. So, replace the main function with:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;func main() {
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;func main() {
 	go woof()
 	meow()
 }
@@ -506,7 +506,7 @@ func meow() {
 &lt;p&gt;So how do we avoid this?&lt;/p&gt;
 &lt;h2 id=&#34;enter-waitgroup&#34;&gt;Enter WaitGroup&lt;/h2&gt;
 &lt;p&gt;WaitGroup provides us with the necessary synchronization needed to execute both functions. Replace the contents of your main.go with:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;package main
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;package main
 
 import (
 	&amp;quot;fmt&amp;quot;
@@ -556,7 +556,7 @@ func bar() {
 &lt;p&gt;In this short article, I&amp;rsquo;m going to show you a liveness probe in action. Liveness probes are used to check if a Pod is healthy (running as expected) or not. It simply acts as a check for Kubernetes to know when it should restart the container.&lt;/p&gt;
 &lt;h2 id=&#34;without-liveness-probe&#34;&gt;Without Liveness Probe&lt;/h2&gt;
 &lt;p&gt;Let us create a simple nginx pod and see what happens when we mess with it without using a Liveness probe. Use the following configuration to create your pod:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;apiVersion: v1
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;apiVersion: v1
 kind: Pod
 metadata:
   name: my-nginx
@@ -566,18 +566,18 @@ spec:
       image: nginx:alpine
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;If we port-forward this container we will notice that it is serving the nginx starter page. Ideally, for this case, we would want Kubernetes to restart this pod if we are not able to reach this page. Let us see if that is the case currently or not.&lt;/p&gt;
 &lt;p&gt;Launch a shell inside the container using &lt;a href=&#34;http://rinkiyakedad.github.io/kubectl-exec-is-so-cool&#34;&gt;kubectl exec&lt;/a&gt;:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;kubectl exec my-nginx -it sh
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;kubectl exec my-nginx -it sh
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Then navigate to the directory which has the HTML file responsible for the nginx starter page:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;cd /usr/share/nginx/html
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cd /usr/share/nginx/html
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Do a &lt;code&gt;ls&lt;/code&gt; here and you&amp;rsquo;ll see the following output:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;50x.html    index.html
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;50x.html    index.html
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now let us delete this &lt;code&gt;index.html&lt;/code&gt; file:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;rm -rf index.html
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;rm -rf index.html
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Return to your original shell by typing &lt;code&gt;exit&lt;/code&gt; in the current one.&lt;/p&gt;
 &lt;p&gt;Now do &lt;code&gt;kubectl get pods&lt;/code&gt;. You will see that even though our pod is now not functioning as expected (because we deleted the index.html file), Kubernetes has still not restarted the pod. And to be honest that shouldn&amp;rsquo;t be a surprise. Why would Kubernetes know that we care about that particular &lt;code&gt;index.html&lt;/code&gt; file unless we explicitly tell it?&lt;/p&gt;
 &lt;h2 id=&#34;enter-the-liveness-probe&#34;&gt;Enter the Liveness Probe&lt;/h2&gt;
 &lt;p&gt;This is where the Liveness Probe comes to the rescue. Update your pod configuration with this:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;apiVersion: v1
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;apiVersion: v1
 kind: Pod
 metadata:
   name: my-nginx
@@ -594,7 +594,7 @@ spec:
 &lt;/blockquote&gt;
 &lt;p&gt;Now repeat the same steps and delete the &lt;code&gt;index.html&lt;/code&gt; file again. This time after deleting the index.html file don&amp;rsquo;t immediately type &lt;code&gt;exit&lt;/code&gt; to leave the shell, instead, wait about 10 secs (which is the default time gap for regular checks) and you automatically exit the terminal. This is because the container inside which we had opened our terminal got restarted.&lt;/p&gt;
 &lt;p&gt;You can verify this by running &lt;code&gt;kubectl get pods&lt;/code&gt; and you should see something like:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;NAME       READY   STATUS    RESTARTS   AGE
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;NAME       READY   STATUS    RESTARTS   AGE
 my-nginx   1/1     Running   1          4m24s
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The 1 in the restarts column confirms that the &lt;strong&gt;container&lt;/strong&gt; in our pod got restarted.&lt;/p&gt;
 &lt;p&gt;So what exactly did the liveness probe do here?
@@ -613,13 +613,13 @@ The &lt;code&gt;httpGet&lt;/code&gt; action sent a GET request to the container.
       <description>&lt;p&gt;I recently learned about &lt;code&gt;kubectl port-forward&lt;/code&gt; and &lt;code&gt;kubectl exec&lt;/code&gt;, and I was amazed by what simple but cool stuff you could o with just these two commands when getting started with Kubernetes. So that&amp;rsquo;s what this post is going to be about.&lt;/p&gt;
 &lt;h2 id=&#34;running-our-pod&#34;&gt;Running Our Pod&lt;/h2&gt;
 &lt;p&gt;I&amp;rsquo;m going to use &lt;code&gt;minikube&lt;/code&gt; to launch my cluster but feel free to use whatever you like. Once you have your cluster up and running (using &lt;code&gt;minikube start&lt;/code&gt;), create a nginx pod using:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;kubectl run my-nginx --image=nginx:alpine
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;kubectl run my-nginx --image=nginx:alpine
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You can confirm your pod is running successfully by running &lt;code&gt;kubectl get pods&lt;/code&gt; and seeing the &lt;code&gt;STATUS&lt;/code&gt; column.&lt;/p&gt;
 &lt;h2 id=&#34;kubectl-port-forward&#34;&gt;kubectl port-forward&lt;/h2&gt;
 &lt;p&gt;Nginx runs on port 80 inside a container. But if you try to go to &lt;code&gt;localhost:80&lt;/code&gt; (or simply &lt;code&gt;localhost&lt;/code&gt; since &lt;code&gt;80&lt;/code&gt; is the default port) you will not see anything.&lt;/p&gt;
 &lt;p&gt;This is expected because we never exposed an external port by which we can reach the Nginx container. We need to kind of &lt;em&gt;poke a hole&lt;/em&gt; into our k8s cluster to expose a port that we can call in the browser which then calls into our Nginx container in the pod.&lt;/p&gt;
 &lt;p&gt;This is where &lt;code&gt;kubectl port-forward&lt;/code&gt; will help us. Run&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;kubectl port-forward my-nginx 8080:80
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;kubectl port-forward my-nginx 8080:80
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;A bit of explanation:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;my-nginx&lt;/code&gt; is simply the pod name.&lt;/li&gt;
@@ -641,19 +641,19 @@ The &lt;code&gt;httpGet&lt;/code&gt; action sent a GET request to the container.
 &lt;p&gt;These two flags combined (&lt;code&gt;-it&lt;/code&gt;) allow us to execute commands inside the container but from our own terminal. This means if you running something like &lt;code&gt;ls&lt;/code&gt; you will see the files in the container and not on your system where the terminal is actually running. You can read more about them &lt;a href=&#34;https://stackoverflow.com/questions/22272401/what-does-it-mean-to-attach-a-tty-std-in-out-to-dockers-or-lxc&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;You can also learn more about the flags it supports &lt;a href=&#34;https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#exec&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;With that out of the way run the following command:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;kubectl exec my-nginx -it sh
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;kubectl exec my-nginx -it sh
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;sh&lt;/code&gt; is the first command we run inside our container. It is the command name of the &lt;a href=&#34;https://superuser.com/a/97617&#34;&gt;Bourne shell&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;This should now give us access to a shell inside our container which is running Nginx. Let us now navigate to the folder containing our &lt;code&gt;index.html&lt;/code&gt; file:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;cd /usr/share/nginx/html
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cd /usr/share/nginx/html
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Type &lt;code&gt;ls&lt;/code&gt; here and you&amp;rsquo;ll see the following files:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;50x.html index.html
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;50x.html index.html
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Let us now edit our &lt;code&gt;index.html&lt;/code&gt; file using vim. Run:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;vi index.html
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;vi index.html
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Press &lt;code&gt;i&lt;/code&gt; to enter the insert mode in vim which will allow you to make changes to the file. Navigate to the &lt;code&gt;style&lt;/code&gt; block and inside body add the following CSS:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;color: blue;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;color: blue;
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Then go down below and replace the &amp;ldquo;Welcome to nginx!&amp;rdquo; written in the &lt;code&gt;h1&lt;/code&gt; tags with anything you&amp;rsquo;d like. Once you&amp;rsquo;re done making changes press &lt;code&gt;esc&lt;/code&gt; to leave this editing mode.&lt;/p&gt;
 &lt;p&gt;Type &lt;code&gt;:wq&lt;/code&gt; (write and quit) and press enter to save this file. Type &lt;code&gt;exit&lt;/code&gt; to leave this shell inside our container and return to your original shell. Now let&amp;rsquo;s run the port-forward command:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;kubectl port-forward my-nginx 8080:80
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;kubectl port-forward my-nginx 8080:80
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;and visit &lt;code&gt;localhost:8080&lt;/code&gt;. You should now see your changes in effect :)&lt;/p&gt;
 &lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://arshsharma.com/2021-04-29-2.png&#34; alt=&#34;edited nginx starter page&#34;  /&gt;
 &lt;/p&gt;
@@ -672,12 +672,12 @@ The &lt;code&gt;httpGet&lt;/code&gt; action sent a GET request to the container.
 &lt;h2 id=&#34;the-tools&#34;&gt;The Tools&lt;/h2&gt;
 &lt;p&gt;We&amp;rsquo;re going to use &lt;a href=&#34;https://github.com/spf13/cobra&#34;&gt;Cobra&lt;/a&gt; to create our CLI. If you want to create a CLI in Golang, trust me, Cobra is the way to &lt;em&gt;GO&lt;/em&gt;. The fact that it is used in the &lt;a href=&#34;https://github.com/kubernetes/kubernetes/blob/master/go.mod#L83&#34;&gt;Kubernetes codebase&lt;/a&gt; should be enough proof of its awesomeness.&lt;/p&gt;
 &lt;p&gt;The simplest way to get started with Cobra is using the &lt;a href=&#34;https://github.com/spf13/cobra/blob/master/cobra/README.md#cobra-generator&#34;&gt;Cobra Generator&lt;/a&gt;. You can simply run&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;go get github.com/spf13/cobra/cobra
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;go get github.com/spf13/cobra/cobra
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;to get the cobra binary in your &lt;code&gt;$GOPATH/bin&lt;/code&gt; directory.&lt;/p&gt;
 &lt;p&gt;Run &lt;code&gt;cobra help&lt;/code&gt; from your terminal to verify that it was installed correctly. A common error you might get is:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;zsh: command not found: cobra
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;zsh: command not found: cobra
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This might be happening because zsh is not picking up the cobra binary from &lt;code&gt;$GOPATH/bin&lt;/code&gt;. To fix that open your &lt;code&gt;.zshrc&lt;/code&gt; file and add the following line:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 &lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
 &lt;p&gt;Note if you&amp;rsquo;re using bash instead of zsh you might need to edit the &lt;code&gt;.bash_profile&lt;/code&gt; file instead&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -686,7 +686,7 @@ The &lt;code&gt;httpGet&lt;/code&gt; action sent a GET request to the container.
 &lt;p&gt;Pretty useless but extremely simple for learning the basics. So let&amp;rsquo;s get started!&lt;/p&gt;
 &lt;h2 id=&#34;cobra-basics&#34;&gt;Cobra Basics&lt;/h2&gt;
 &lt;p&gt;We can start our cobra project using:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;mkdir sound
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;mkdir sound
 cd sound
 cobra init --pkg-name=sound
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This will set up a cobra project for us. The two important things which this sets up for us are:&lt;/p&gt;
@@ -694,7 +694,7 @@ cobra init --pkg-name=sound
 &lt;li&gt;&lt;code&gt;main.go&lt;/code&gt;: There isn&amp;rsquo;t a lot going on in this file. All it does is call the &lt;code&gt;execute&lt;/code&gt; method in the &lt;code&gt;cmd&lt;/code&gt; package.&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;cmd/root.go&lt;/code&gt;: For the sake of simplification replace the contents of your &lt;code&gt;root.go&lt;/code&gt; file with these:&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt;package cmd
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;package cmd
 
 import (
  &amp;quot;github.com/spf13/cobra&amp;quot;
@@ -721,12 +721,12 @@ func Execute() {
 &lt;p&gt;Let&amp;rsquo;s now try this out!&lt;/p&gt;
 &lt;h2 id=&#34;running-the-cli&#34;&gt;Running The CLI&lt;/h2&gt;
 &lt;p&gt;Before installing, run &lt;code&gt;go mod init sound&lt;/code&gt; to initialize go modules for the project. Then run &lt;code&gt;go mod tidy&lt;/code&gt; to generate the &lt;code&gt;go.sum&lt;/code&gt; file. Once this is done simply run,&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;go install
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;go install
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;to install your CLI.&lt;/p&gt;
 &lt;p&gt;To test it out, run
 &lt;code&gt;sound&lt;/code&gt;
 and you should see the following output:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;A longer description that spans multiple lines and likely contains
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;A longer description that spans multiple lines and likely contains
 examples and usage of using your application. For example:
 
 Cobra is a CLI library for Go that empowers applications.
@@ -735,7 +735,7 @@ to quickly create a Cobra application.
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;If you haven&amp;rsquo;t already noticed, this is the same text present by default in the &lt;code&gt;Long&lt;/code&gt; field. Currently, the base command does nothing so running it just prints the help for it. Let&amp;rsquo;s change this behavior now.&lt;/p&gt;
 &lt;h2 id=&#34;adding-some-logic&#34;&gt;Adding Some Logic&lt;/h2&gt;
 &lt;p&gt;We now want our command to take an argument from the user and then print something based on that. For that functionality, the code is pretty simple:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;// rootCmd represents the base command when called without any subcommands
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;// rootCmd represents the base command when called without any subcommands
 var rootCmd = &amp;amp;cobra.Command{
 	Use:   &amp;quot;sound&amp;quot;,
 	Short: &amp;quot;A brief description of your application&amp;quot;,
