@@ -174,15 +174,15 @@ x (execute) -&amp;gt; 1
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Starting to make sense? The first row corresponds to the permissions the owner of the file would have, the second corresponds to the ones the group will have, and the third, corresponds to the permissions everyone else on the filesystem will have. You can create similar combinations as per your need to modify the file permissions.&lt;/p&gt;
 &lt;h2 id=&#34;some-basics-about-variables&#34;&gt;Some Basics About Variables&lt;/h2&gt;
 &lt;p&gt;Variables in bash can be directly assigned values without specifying any type like int, string, etc.&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;VAR_NAME=&amp;quot;value&amp;quot;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;VAR_NAME=&amp;#34;value&amp;#34;
 VAR_NAME=5
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;To reference a variable we use a dollar sign along with its name, for example, &lt;code&gt;$VAR_NAME&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Single quotes prevent the expansion of variables whereas double don&amp;rsquo;t. For example,&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;echo &#39;$VAR_NAME is a variable&#39; -&amp;gt; $VAR_NAME is a variable
-echo &amp;quot;$VAR_NAME is a variable&amp;quot; -&amp;gt; value is a variable (if VAR_NAME was set to &amp;quot;value&amp;quot;)
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;echo &amp;#39;$VAR_NAME is a variable&amp;#39; -&amp;gt; $VAR_NAME is a variable
+echo &amp;#34;$VAR_NAME is a variable&amp;#34; -&amp;gt; value is a variable (if VAR_NAME was set to &amp;#34;value&amp;#34;)
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;We can also place the variable name in &lt;code&gt;{}&lt;/code&gt; and precede the opening brace with &lt;code&gt;$&lt;/code&gt;. This is useful in cases like,&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;WORD=&amp;quot;talk&amp;quot;
-echo &amp;quot;${WORD}ing&amp;quot;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;WORD=&amp;#34;talk&amp;#34;
+echo &amp;#34;${WORD}ing&amp;#34;
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Output -&amp;gt; &amp;ldquo;talking&amp;rdquo;&lt;/p&gt;
 &lt;p&gt;Also, note that variable names are in upper case by &lt;strong&gt;convention&lt;/strong&gt; but this isn&amp;rsquo;t mandatory by bash.&lt;/p&gt;
 &lt;h2 id=&#34;something-about-commands&#34;&gt;Something About Commands&lt;/h2&gt;
@@ -230,9 +230,8 @@ metadata:
   name: ns-roles-dictionary
   namespace: kyverno
 data:
-  prod: &amp;quot;arn:aws:iam::123456789012:role/prod&amp;quot;
-  dev: &amp;quot;arn:aws:iam::123456789012:role/dev&amp;quot;
-
+  prod: &amp;#34;arn:aws:iam::123456789012:role/prod&amp;#34;
+  dev: &amp;#34;arn:aws:iam::123456789012:role/dev&amp;#34;
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;creating-the-kyverno-policy&#34;&gt;Creating The Kyverno Policy&lt;/h2&gt;
 &lt;p&gt;Now to the fun part - creating our Kyverno policy. Let us first look at the policy YAML file and then I’ll walk you through it. If this is your first time seeing a Kyverno policy don’t worry at all because one of the most beautiful things about Kyverno is how intuitive it is. It follows a very similar structure to the YAML files for Kubernetes objects.&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;apiVersion: kyverno.io/v1
@@ -256,20 +255,19 @@ spec:
         kinds:
         - Deployment
     preconditions:
-    - key: &amp;quot;{{ request.object.metadata.namespace }}&amp;quot;
+    - key: &amp;#34;{{ request.object.metadata.namespace }}&amp;#34;
       operator: In
-      value: [&amp;quot;prod&amp;quot;, &amp;quot;dev&amp;quot;]
-    - key: &amp;quot;{{ request.object.spec.template.metadata.annotations.\&amp;quot;iam.amazonaws.com/role\&amp;quot; }}&amp;quot;
+      value: [&amp;#34;prod&amp;#34;, &amp;#34;dev&amp;#34;]
+    - key: &amp;#34;{{ request.object.spec.template.metadata.annotations.\&amp;#34;iam.amazonaws.com/role\&amp;#34; }}&amp;#34;
       operator: NotEqual
-      value: &amp;quot;&amp;quot;
+      value: &amp;#34;&amp;#34;
     validate:
-      message: &amp;quot;Annotation iam.amazonaws.com/role \&amp;quot;{{ request.object.spec.template.metadata.annotations.\&amp;quot;iam.amazonaws.com/role\&amp;quot; }}\&amp;quot; is not allowed for the \&amp;quot;{{ request.object.metadata.namespace }}\&amp;quot; namespace.&amp;quot;
+      message: &amp;#34;Annotation iam.amazonaws.com/role \&amp;#34;{{ request.object.spec.template.metadata.annotations.\&amp;#34;iam.amazonaws.com/role\&amp;#34; }}\&amp;#34; is not allowed for the \&amp;#34;{{ request.object.metadata.namespace }}\&amp;#34; namespace.&amp;#34;
       deny:
         conditions:
-        - key: &amp;quot;{{ request.object.spec.template.metadata.annotations.\&amp;quot;iam.amazonaws.com/role\&amp;quot; }}&amp;quot;
+        - key: &amp;#34;{{ request.object.spec.template.metadata.annotations.\&amp;#34;iam.amazonaws.com/role\&amp;#34; }}&amp;#34;
           operator: NotIn
-          value:  &amp;quot;{{ \&amp;quot;ns-roles-dictionary\&amp;quot;.data.\&amp;quot;{{ request.object.metadata.namespace }}\&amp;quot; }}&amp;quot;
-
+          value:  &amp;#34;{{ \&amp;#34;ns-roles-dictionary\&amp;#34;.data.\&amp;#34;{{ request.object.metadata.namespace }}\&amp;#34; }}&amp;#34;
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Not as scary as you expected, right? Let’s go through it line by line now :)&lt;/p&gt;
 &lt;p&gt;Let’s begin from the spec section since everything prior to that is all the standard boilerplate stuff. The first thing in the spec section is &lt;code&gt;validationFaliureAction&lt;/code&gt; which we have set to &lt;code&gt;enforce&lt;/code&gt;. What this does is specify what should happen if this policy is violated by an object. Setting it to &lt;code&gt;enforce&lt;/code&gt; would make sure that the object which violates this policy does not get created whereas setting it to &lt;code&gt;audit&lt;/code&gt; will allow the object to get created but will report that violation.&lt;/p&gt;
 &lt;p&gt;Each Kyverno policy must have at least one rule which is what we define next. After specifying the name of the rule we specify the &lt;code&gt;configMap&lt;/code&gt; we created earlier. This is done using the &lt;code&gt;context&lt;/code&gt; key. We do this because it allows us to easily refer to values from this &lt;code&gt;configMap&lt;/code&gt; in our Kyverno policy, as you will see later.&lt;/p&gt;
@@ -304,7 +302,7 @@ The first precondition simply states that the policy should not be applied if th
 &lt;p&gt;A channel in Go can be best understood by comparing it with a box. It is a box where goroutines can put and take out the data. So essentially channels help your goroutines to share data. One goroutine can send a value into the channel and another goroutine can receive those values. A very simple code snippet demonstrating this is:&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;package main
 
-import &amp;quot;fmt&amp;quot;
+import &amp;#34;fmt&amp;#34;
 
 func main() {
 	c := make(chan int)
@@ -318,7 +316,7 @@ func main() {
 &lt;p&gt;A lot to explain in this one line. Let us first run some things. Trying running the following code:&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;package main
 
-import &amp;quot;fmt&amp;quot;
+import &amp;#34;fmt&amp;#34;
 
 func main() {
 	c := make(chan int)
@@ -328,7 +326,7 @@ func main() {
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;It will give you an error. Now try running:&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;package main
 
-import &amp;quot;fmt&amp;quot;
+import &amp;#34;fmt&amp;#34;
 
 func main() {
 	c := make(chan int, 1)
@@ -344,7 +342,7 @@ func main() {
 &lt;p&gt;To fix this we could either launch a separate goroutine as shown in the initial code snippet or we could increase the buffer space to 1 as we did in the third code snippet. Increasing the buffer space to 1 basically told the channel that you can continue without blocking even if you have 1 value being sent to you with no one to receive it. So if we modify the third code snippet to as follows it will again not run as now we&amp;rsquo;re sending two values:&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;package main
 
-import &amp;quot;fmt&amp;quot;
+import &amp;#34;fmt&amp;#34;
 
 func main() {
 	c := make(chan int, 1)
@@ -384,9 +382,9 @@ func main() {
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;package main
 
 import (
-	&amp;quot;fmt&amp;quot;
-	&amp;quot;runtime&amp;quot;
-	&amp;quot;sync&amp;quot;
+	&amp;#34;fmt&amp;#34;
+	&amp;#34;runtime&amp;#34;
+	&amp;#34;sync&amp;#34;
 )
 
 func main() {
@@ -407,7 +405,7 @@ func main() {
 		}()
 	}
 	wg.Wait()
-	fmt.Println(&amp;quot;count:&amp;quot;, counter)
+	fmt.Println(&amp;#34;count:&amp;#34;, counter)
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;We declare a variable &lt;code&gt;counter&lt;/code&gt; which is what all our goroutines will try to modify simultaneously. Then we launch 15 anonymous self-executing functions in their separate goroutines. Each of these functions reads the value from &lt;code&gt;counter&lt;/code&gt;, increments it, and then writes it back. Apart from all this we also use a &lt;a href=&#34;https://arshs.tech/concurrency-in-golang/&#34;&gt;WaitGroup&lt;/a&gt; which I explained in detail in the previous article. This explains everything apart from &lt;code&gt;runtime.Gosched()&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Before I explain what that does, comment that line and run the code a few times. You will see that each time the output is 15. This should not be the case given there is a race condition. Let&amp;rsquo;s see something even more interesting. Change the initial value of num to 100 and now run it multiple times. This time you&amp;rsquo;ll see that different values appear but they&amp;rsquo;re still close to 100 and not much apart. Next, change this value to 1000 and run it multiple times you should now start seeing even greater differences in the values you are getting. Now uncomment the line and repeat the steps with num as 15, 100, and 1000. If you did everything correctly now you should see a different value each time in all three cases and the values would be much farther apart than before.&lt;/p&gt;
@@ -475,7 +473,7 @@ func main() {
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;package main
 
 import (
-	&amp;quot;fmt&amp;quot;
+	&amp;#34;fmt&amp;#34;
 )
 
 func main() {
@@ -485,13 +483,13 @@ func main() {
 
 func woof() {
 	for i := 1; i &amp;lt;= 5; i++ {
-		fmt.Println(&amp;quot;woof &amp;quot;, i)
+		fmt.Println(&amp;#34;woof &amp;#34;, i)
 	}
 }
 
 func meow() {
 	for i := 1; i &amp;lt;= 5; i++ {
-		fmt.Println(&amp;quot;meow &amp;quot;, i)
+		fmt.Println(&amp;#34;meow &amp;#34;, i)
 	}
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Right now the instructions in the main function would execute sequentially. So first &lt;code&gt;woof&lt;/code&gt; will be called and when it returns then and only then will &lt;code&gt;meow&lt;/code&gt; be called. To &lt;em&gt;enable&lt;/em&gt; parallel execution we use the &lt;code&gt;go&lt;/code&gt; keyword right before the instruction. So, replace the main function with:&lt;/p&gt;
@@ -509,9 +507,9 @@ func meow() {
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;package main
 
 import (
-	&amp;quot;fmt&amp;quot;
-	&amp;quot;runtime&amp;quot;
-	&amp;quot;sync&amp;quot;
+	&amp;#34;fmt&amp;#34;
+	&amp;#34;runtime&amp;#34;
+	&amp;#34;sync&amp;#34;
 )
 
 var wg sync.WaitGroup
@@ -528,7 +526,7 @@ func main() {
 
 func woof() {
 	for i := 1; i &amp;lt;= 5; i++ {
-		fmt.Println(&amp;quot;woof &amp;quot;, i)
+		fmt.Println(&amp;#34;woof &amp;#34;, i)
 	}
 	// remove one thing from waiting list
 	wg.Done()
@@ -536,7 +534,7 @@ func woof() {
 
 func bar() {
 	for i := 1; i &amp;lt;= 5; i++ {
-		fmt.Println(&amp;quot;meow &amp;quot;, i)
+		fmt.Println(&amp;#34;meow &amp;#34;, i)
 	}
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Run the program now and you should see output from both the functions. So what exactly happened?&lt;/p&gt;
@@ -697,13 +695,13 @@ cobra init --pkg-name=sound
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;package cmd
 
 import (
- &amp;quot;github.com/spf13/cobra&amp;quot;
+ &amp;#34;github.com/spf13/cobra&amp;#34;
 )
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &amp;amp;cobra.Command{
- Use: &amp;quot;sound&amp;quot;,
- Short: &amp;quot;A brief description of your application&amp;quot;,
+ Use: &amp;#34;sound&amp;#34;,
+ Short: &amp;#34;A brief description of your application&amp;#34;,
  Long: `A longer description that spans multiple lines and likely contains
 examples and usage of using your application. For example:
 
@@ -737,8 +735,8 @@ to quickly create a Cobra application.
 &lt;p&gt;We now want our command to take an argument from the user and then print something based on that. For that functionality, the code is pretty simple:&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;// rootCmd represents the base command when called without any subcommands
 var rootCmd = &amp;amp;cobra.Command{
-	Use:   &amp;quot;sound&amp;quot;,
-	Short: &amp;quot;A brief description of your application&amp;quot;,
+	Use:   &amp;#34;sound&amp;#34;,
+	Short: &amp;#34;A brief description of your application&amp;#34;,
 	Long: `A longer description that spans multiple lines and likely contains
 examples and usage of using your application. For example:
 
@@ -747,14 +745,14 @@ This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) == 0 {
-			log.Fatal(&amp;quot;please provide a pet&amp;quot;)
+			log.Fatal(&amp;#34;please provide a pet&amp;#34;)
 		}
-		if args[0] == &amp;quot;dog&amp;quot; {
-			fmt.Println(&amp;quot;wooooof!&amp;quot;)
-		} else if args[0] == &amp;quot;cat&amp;quot; {
-			fmt.Println(&amp;quot;meoooow!&amp;quot;)
+		if args[0] == &amp;#34;dog&amp;#34; {
+			fmt.Println(&amp;#34;wooooof!&amp;#34;)
+		} else if args[0] == &amp;#34;cat&amp;#34; {
+			fmt.Println(&amp;#34;meoooow!&amp;#34;)
 		} else {
-			fmt.Println(&amp;quot;sorry your pet is currently not supported :(&amp;quot;)
+			fmt.Println(&amp;#34;sorry your pet is currently not supported :(&amp;#34;)
 		}
 	},
 }
