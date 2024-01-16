@@ -1,0 +1,103 @@
+---
+talks:
+- date: 2023-12-08
+  title: "Improving the Cloud Development Experience: The Good, The Bad, and The Kubernetes-Crossplane Way"
+  location: "KubeDay India"
+  locationLink: https://events.linuxfoundation.org/kubeday-india/
+  slides: https://docs.google.com/presentation/d/1Zdak2whe-cshSt1XzbHbc8pqPT4_DYr8hJSJueoPqzY/edit?usp=sharing
+  recording: https://www.youtube.com/watch?v=98dJHXFhJDw
+- date: 2023-07-17
+  title: "Backstage: The Ultimate Access Pass to Maximum Developer Efficiency"
+  location: "Kubernetes Community Days Munich"
+  locationLink: https://community.cncf.io/events/details/cncf-kcd-munich-presents-kcd-munich-2023/
+  slides: https://docs.google.com/presentation/d/1lx2vt9LNoprU6pXEDWIM3cV0ksWJUbSRi791wDFUKAM/edit?usp=sharing
+- date: 2023-06-19
+  title: "Eliminating the Gap Between Development and Production with Kubernetes and Crossplane"
+  location: "KubeDay Israel"
+  locationLink: https://events.linuxfoundation.org/kubeday-israel/
+  slides: https://docs.google.com/presentation/d/1Oja-_B-U45mc8pdNYHfx6vTpMs77vvlF1DU8LrUUPjw/edit?usp=sharing
+  recording: https://youtu.be/k9REKoTeSzw
+- date: 2023-01-26
+  title: "Making DevOps Friendlier for Developers"
+  location: "Conf42 DevOps"
+  locationLink: https://www.conf42.com/DevOps_2023_Arsh_Sharma_devops_friendlier_for_developers
+  slides: https://conf42.github.io/static/slides/Conf42%20DevOps%202023%20-%20Arsh%20Sharma.pdf
+  recording: https://youtu.be/kpSifbUkPiI
+- date: 2022-10-20
+  title: "Keynote: Did We Make Developers Happy by Shifting to Microservices?"
+  location: "Conf42 Kube Native"
+  locationLink: https://www.conf42.com/Kube_Native_2022_Arsh_Sharma_shifting_microservices
+  slides: https://docs.google.com/presentation/d/1HVU2_T2n8rQdu0veTqvba1aIabaL8mHDQs-xLLwmrEs/edit?usp=sharing
+  recording: https://youtu.be/vi8EJ1vflf0
+- date: 2022-10-13
+  title: "Using Kubernetes and Crossplane Together to Help Developers Code Cloud Native Applications"
+  location: "Kubernetes Community Days Mena"
+  locationLink: https://community.cncf.io/events/details/cncf-kcd-mena-presents-kcd-mena-2022/
+  slides: https://docs.google.com/presentation/d/183B_zHnrqdP7zs8cm_mL8uOJipf40CRrRrWBtVjLJLI/edit?usp=sharing
+  recording: https://youtu.be/N4j5IwlUQjc
+- date: 2022-07-23
+  title: "How Kubernetes Is Helping Shape the Future of Modern Application Development"
+  location: "OpenInfra & Cloud Native Days Asia"
+  locationLink: https://2022.openinfra.asia/
+  slides: https://docs.google.com/presentation/d/1484dp70cBIZZibbEF6cuQBNQrWkDjI9a98ofVTi-8c8/edit?usp=sharing
+  recording: https://youtu.be/Kq44mkh3dyI
+- date: 2022-05-18
+  title: "Prow! Leveraging Developer-Centric CI for Your OSS Project!"
+  location: "KubeCon + CloudNativeCon Europe"
+  locationLink: https://kccnceu2022.sched.com/event/ytn6/prow-leveraging-developer-centric-ci-for-your-oss-project-nabarun-pal-vmware-arsh-sharma-okteto
+  slides: https://drive.google.com/file/d/1WBm9Hpi7gTYk0P4nONiRDeD0RCE1g2XP/view?usp=sharing
+  recording: https://youtu.be/sdU-3cqiJmg
+- date: 2022-05-16
+  title: "Leveraging Running Stateful Workloads on Kubernetes for the Benefit of Developers"
+  location: "DoK Day Europe"
+  locationLink: https://dok.community/dok-day-europe-2022-kubecon/
+  slides: https://docs.google.com/presentation/d/1wiUVGl0R9eyysKKIEKyWTBNBAiIeD-I02hRur2asIJs/edit?usp=sharing
+  recording: https://youtu.be/KUipuM3UJF4
+- date: 2022-05-02
+  title: "Maybe It's Time to Rethink How You've Been Developing?"
+  location: "DevX Conf"
+  locationLink: https://devxconf.org/
+  slides: https://docs.google.com/presentation/d/1_Q61iyc38qJoQp-4p_rFgI3jXrEooNLW3uqfxwyH7xQ/edit?usp=sharing
+  recording: https://youtu.be/FRmv-IS-7ow
+- date: 2022-04-23
+  title: "Leveraging Kubernetes For Remote Development Environments"
+  location: "Kubernetes Community Days Bengaluru"
+  locationLink: https://community.cncf.io/events/details/cncf-kcd-bengaluru-presents-kubernetes-community-days-bengaluru-2022-virtual-event/
+  slides: https://docs.google.com/presentation/d/1uuMK8ptWmBl7tqGZKWKtKT6TvwbwLXIyNEyBfJYQmHI/edit?usp=sharing
+  recording: https://youtu.be/p2XvLoPuvN8
+- date: 2021-12-10
+  title: "The Hitchhiker's Guide to Evaluating Dependency Updates to Kubernetes"
+  location: "KubeCon + CloudNativeCon + Open Source Summit China"
+  locationLink: https://kccncosschn21.sched.com/event/pcav
+  slides: https://docs.google.com/presentation/d/1c8tgTyBwS84ZkveG3fcgp_JKIqquR-cDUEtV7TKfhEo/edit?usp=sharing
+  recording: https://youtu.be/DzzQswjHTN8
+- date: 2021-10-09
+  title: "depstat: Analyzing a Go Project’s Dependencies"
+  location: "Cloud Native Rejekts"
+  locationLink: https://cloud-native.rejekts.io/
+  slides: https://docs.google.com/presentation/d/1XqhYXuVUjnRAnyW3z1_cYHtp_8CPzwiKSH0dbtwcxiU/edit?usp=sharing
+  recording: https://youtu.be/l-l-jZeLUDM
+- date: 2021-09-17
+  title: "Making Your Controllers Resilient: Workqueue To The Rescue"
+  location: "PowerShell | DevOps | Cloud Conference"
+  locationLink: https://pdcconf.in/
+  slides: https://docs.google.com/presentation/d/1BuFxkmxVOZP47A2sS70A1ETA8XoiQGaVAmFIdmoIuhs/edit?usp=sharing
+  recording: https://youtu.be/hv5glaYcPSE?t=6904
+- date: 2021-09-15
+  title: "A Guide To Evaluating Dependency Updates To Kubernetes"
+  location: "Kubernetes Community Days UK"
+  locationLink: https://community.cncf.io/events/details/cncf-kcd-uk-presents-kubernetes-community-days-uk-2021/
+  slides: https://docs.google.com/presentation/d/1-v22L7OCTlao6CCThzPZPdfx5pYYgwnd09WA2Ks2AxI/edit?usp=sharing
+  recording: https://youtu.be/ppgpVqU2bwM
+- date: 2021-09-11
+  title: "How To Contribute To Kubernetes"
+  location: "OpenInfra Days Asia"
+  locationLink: https://2021.openinfra.asia/schedule.html
+  slides: https://docs.google.com/presentation/d/11a02Q4G5p1yghjmIvlkwk4o0QoKpfMePK9Wb-t4RC5k/edit?usp=sharing
+  recording: https://youtu.be/3L1a149NsR0
+
+# - date: 2020-10-03
+#   title: "Lightning Talk: Kubernetes Deployment Best Practices"
+#   slides: https://speakerdeck.com/palnabarun/kubernetes-deployment-best-practices
+#   location: PyCon India
+#   recording: https://www.youtube.com/watch?v=o9NcWkhvLuA

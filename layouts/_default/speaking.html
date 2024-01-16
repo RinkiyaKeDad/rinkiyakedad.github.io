@@ -1,0 +1,137 @@
+{{ define "main" }}
+<style>
+    .talk {
+        margin-bottom: 1.5rem;
+    }
+
+    .talk-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .talk-title {
+        font-weight: 600;
+    }
+
+    .talk-location {
+        margin-bottom: 0.1rem;
+    }
+
+    .talk-metadata {
+        display: flex;
+        flex-direction: row;
+        justify-items: left;
+    }
+
+    .talk-metadata-item {
+        margin-right: 0.5rem;
+    }
+
+    .years {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .year {
+        margin-right: 0.375rem;
+    }
+
+    .year-jump {
+        margin-right: 0.5rem;
+    }
+
+    .year-header-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        vertical-align: middle;
+        margin-top: 3rem;
+        margin-bottom: 1rem;
+        font-size: 1.5em;
+    }
+
+    .year-header {
+        display: block;
+        letter-spacing: 0.01em;
+        font-weight: 700;
+        font-style: normal;
+    }
+</style>
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header class="post-header">
+        {{ partial "breadcrumbs.html" . }}
+        <h1 class="post-title">
+            {{ .Title }}
+            {{- if .Draft }}<div class="entry-isdraft"><sup>&nbsp;&nbsp;[draft]</sup></div>{{- end }}
+        </h1>
+        {{- if .Description }}
+        <div class="post-description">
+            {{ .Description }}
+        </div>
+        {{- end }}
+        {{- if not (.Param "hideMeta") }}
+        <div class="post-meta">
+            {{- partial "post_meta.html" . -}}
+            {{- partial "translation_list.html" . -}}
+            {{- partial "edit_post.html" . -}}
+        </div>
+        {{- end }}
+    </header>
+    <div class="post-content" itemprop="articleBody">
+        {{ .Content }}
+
+        {{ $years := slice }}
+        {{ range .Site.Data.speaking.talks }}
+        {{ $years = $years | append (dateFormat "2006" .date) }}
+        {{ end }}
+
+        <div class="years">
+            <span class="year-jump">Jump to: </span>
+            {{ range uniq $years }}
+            <a class="year" href="#{{ . }}">
+                {{ . }}
+            </a>
+            {{ end }}
+        </div>
+
+
+        {{ range uniq $years }}
+        <div class="year-header-row">
+            <div class="year-header" id="{{ . }}">
+                {{ . }}
+            </div>
+        </div>
+
+        {{ $year := . }}
+
+
+        {{ range $.Site.Data.speaking.talks }}
+        {{ if eq $year (dateFormat "2006" .date) }}
+        <div class="talk">
+            <div class="talk-header">
+                <div class="talk-title">{{ .title }}</div>
+                <div class="talk-date">{{ dateFormat "Jan 2006" .date }}</div>
+            </div>
+            <div class="talk-location">
+                at <a href="{{ .locationLink }}">{{ .location }}</a>
+            </div>
+            <div class="talk-metadata">
+                {{ if .recording }}
+                <div class="talk-metadata-item">
+                    <a href="{{ .recording }}">Recording</a>
+                </div>
+                {{ end }}
+                {{ if .slides }}
+                <div class="talk-metadata-item">
+                    <a href="{{ .slides }}">Slides</a>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+        {{ end }}
+        {{ end }}
+    </div>
+</article>
+{{ end }}
