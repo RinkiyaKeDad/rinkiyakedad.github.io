@@ -10,14 +10,23 @@ I’ve been creating technical content for quite some time now. Initially it was
 
 As we started to grow and scale, this ad hoc approach wasn’t going to cut it. We began being more strategic about the areas of content we wanted to focus on and what value we were expecting to get out of it. Over time, I developed a framework of sorts to help me think about different types of content which is relevant for a dev tools company. In this blog, I’m going to share that with you!
 
-But before reading further, I had one small request. If you enjoy the blogs I write, I would really appreciate it if you signed up for my newsletter: https://buttondown.email/arsh
-Every month, you'll receive just one (no spam!) email from me sharing interesting things I've learned, in the cloud native ecosystem. Now, let's proceed with the article :)
+But before reading further, I had one small request. If you enjoy the blogs I write, I would really appreciate it if you signed up for my newsletter. Every month, you'll receive just one (no spam!) email from me sharing interesting things I've learned, in the cloud native ecosystem. 
+
+{{< rawhtml >}}
+<iframe
+scrolling="no"
+style="width:100%!important;height:220px;border:1px #ccc solid !important"
+src="https://buttondown.email/arsh?as_embed=true"
+></iframe><br /><br />
+{{< /rawhtml >}}
+
+Now, let's proceed with the article :)
 
 ## The Three Buckets
 
 If you’re a company selling to developers, in my opinion, there are three buckets for content which you need to fill. Obviously there are other kinds of content but these are three areas which I feel are really MUST HAVES. And I’m not talking about the form of content, that is, blogs or videos or talks, etc. I’m talking more about “themes of content” here. 
 
-!(three buckets)[threebuckets.jpeg]
+![three buckets](threebuckets.jpeg)
 
 Here are the three buckets and I’ll go into more details about each bucket next:
 - Feature Education
@@ -42,7 +51,7 @@ The first is that developers will not stop using all the other things they alrea
 
 The second reason to do this is that it’s just really good publicity! What better way of getting eyes on your product than by showcasing how it can fit right in and enhance existing workflows? By creating content that demonstrates the integration or compatibility of your product with other popular tools, you are essentially advertising to a wider audience who may not have heard of your product otherwise. Plus, this type of content has high potential for sharing and reaching new users through word-of-mouth recommendations. Cherry on top of that is that you also get to build relations with other companies operating in the same space as you.
 
-!(integrations)[integrations.jpg]
+![integrations](integrations.jpg)
 
 My personal learning has been that webinars are great for this, especially if you can get someone from the other company to join as a guest speaker. This not only adds credibility to your content but also allows for cross-promotion and potential collaborations in the future. But the way to get the attention of the other companies almost always starts with a blog post :)
 

@@ -21,3 +21,4 @@ Automated via the GitHub Action. [Tutorial](https://gohugo.io/hosting-and-deploy
 ### Resources
 
 1. [This](https://youtu.be/LIFvgrRxdt4) video.
+2. How to add HTML in blog posts. [This](https://anaulin.org/blog/hugo-raw-html-shortcode/).
