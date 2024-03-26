@@ -1,5 +1,22 @@
 ---
 talks:
+- date: 2024-03-19
+  title: "Is Your OSS Project Ready To Spin Off Into a Company?"
+  location: "Cloud Native StartupFest Paris"
+  locationLink: https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/co-located-events/cloud-native-startupfest/
+  slides: https://docs.google.com/presentation/d/1PEvopfr5OqrcGBOORP4gehURJYv7YbW1-STulVR14Kg/edit?usp=sharing
+- date: 2024-03-18
+  title: "From Sherlock to Skynet: Navigating Cloud-Native Terrain with OpenTelemetry and Runtime Security"
+  location: "Cloud Native Rejekts Paris"
+  locationLink: https://cfp.cloud-native.rejekts.io/cloud-native-rejekts-eu-paris-2024/talk/UJAZR9/
+  slides: https://docs.google.com/presentation/d/1Z9zDurMned_cVcIS9xvPVS92mg0yw_E7v2dn7bCHYR4/edit?usp=sharing
+  recording: https://www.youtube.com/watch?v=PWZJzjB7vso&t=21501s
+- date: 2024-02-03
+  title: "Platform Engineering and Developer Experience: Two Sides of the Same Coin"
+  location: "Kubernetes Community Days Kerala"
+  locationLink: https://kcdkerala.in/
+  slides: https://docs.google.com/presentation/d/1k6cDxrF8WcAHzm-g3-5U3WEvGPh8DxEn9B8ijKCyCp8/edit?usp=sharing
+  recording: https://www.youtube.com/watch?v=NahFJdIPd1c
 - date: 2023-12-08
   title: "Improving the Cloud Development Experience: The Good, The Bad, and The Kubernetes-Crossplane Way"
   location: "KubeDay India"
