@@ -23,7 +23,7 @@ So here’s the code ChatGPT gave me for implementing the toggle functionality:
 
 First of all, in the `popup.js` to change the state of the button shown in the `popup.html` when it is clicked:
 
-```javascript
+```js
 document.addEventListener("DOMContentLoaded", function () {
   const toggleButton = document.getElementById("toggleButton");
 
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 Then in the `background.js`, to have listeners that store the state in the Chrome local storage and send the latest state back when asked for:
 
-```javascript
+```js
 // background.js
 let isEnabled = true;
 
@@ -83,7 +83,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
 And finally, in the `content.js`, I added this function which would send a message to the Chrome runtime to check if the extension is enabled or not and run a callback function if enabled:
 
-```javascript
+```js
 function checkOnOff(callback) {
   chrome.runtime.sendMessage({ action: "getStatus" }, (response) => {
     if (response && typeof response.isEnabled !== "undefined") {
@@ -104,7 +104,7 @@ Only a few days after I had merged this code, I noticed a weird bug. I would tur
 
 I knew it was this PR which introduced this bug (benefits of using version control for personal projects as well), so I went back. I decided I’m going to make the culprit fix their own mistake. I did have a slight idea of what might be going wrong, but I still decided to run it by our flawed expert. And what it caught was exactly along the lines of what I was thinking. If you look at the earlier code:
 
-```javascript
+```js
 // background.js
 let isEnabled = true;
 
@@ -129,7 +129,7 @@ you see that when the content script asks for status, we send the `isEnabled` va
 
 The way to fix that is what I mentioned earlier. Returning the value of `isEnabled` after fetching it from the local storage, and that’s what ChatGPT suggested as well:
 
-```javascript
+```js
 // background.js
 let isEnabled = true;
 
