@@ -4,6 +4,7 @@ read_time: true
 date: 2024-07-10T00:00:00+05:30
 tags:
   - ai
+  - python
 ---
 
 If you're developing or thinking of creating an app that leverages the OpenAI API but don't want to put down your credit card until you're sure you have something, I have good news for you. In this article I’m going to show you how you can create a backend API which is compatiable with the OpenAI API. However, when running this API locally during development, we will use the [Llama3](https://llama.meta.com/llama3/) model **running locally on your laptop**. When you want to use this in production, all you need to do is change the environment variables, and everything else will remain the same :)
@@ -181,6 +182,7 @@ Now, if you swap the environment variables with the OpenAI ones and restart your
 I hope this was useful in making it easier for you to get started developing AI powered applications without incurring any costs for the model during development. If this was helpful, subscribe to my newsletter to get notified whenever I post more such content! :)
 
 {{< rawhtml >}}
+
 <iframe
 scrolling="no"
 style="width:100%!important;height:220px;border:1px #ccc solid !important"
