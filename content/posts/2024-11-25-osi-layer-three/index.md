@@ -82,3 +82,11 @@ Now we know that Layer 3 devices encapsulate IP packets in frames to be sent ove
 Pheww. So I know we covered a lot in this one, but I do hope that you found it as fun and fascinating as I did when I was learning about all this stuff. It's pretty cool to understand how the things we take for granted (the internet) actually work behind the scenes. Take some time to digest this, and I'll see you in the next one, where we'll cover Layer 4 and Layer 5 of the OSI model. 🙂
 
 Sign up for my newsletter to avoid missing when I upload a new blog!
+
+{{< rawhtml >}}
+<iframe
+scrolling="no"
+style="width:100%!important;height:220px;border:1px #ccc solid !important"
+src="https://buttondown.email/arsh?as_embed=true"
+></iframe><br /><br />
+{{< /rawhtml >}}
