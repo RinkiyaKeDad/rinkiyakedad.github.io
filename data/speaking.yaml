@@ -5,6 +5,7 @@ talks:
   location: "Cloud Native StartupFest Paris"
   locationLink: https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/co-located-events/cloud-native-startupfest/
   slides: https://docs.google.com/presentation/d/1PEvopfr5OqrcGBOORP4gehURJYv7YbW1-STulVR14Kg/edit?usp=sharing
+  recording: https://www.youtube.com/watch?v=jLgrVb9MJ50
 - date: 2024-03-18
   title: "From Sherlock to Skynet: Navigating Cloud-Native Terrain with OpenTelemetry and Runtime Security"
   location: "Cloud Native Rejekts Paris"
