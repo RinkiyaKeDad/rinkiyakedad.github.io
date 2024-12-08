@@ -18,13 +18,13 @@ ShowBreadCrumbs: false
 ShowPostNavLinks: true
 ---
 
-Hey! My name is Arsh. Across the internet, you'll also find me as **@RinkiyaKeDad** in many places. I'm currently a Developer Experience Engineer at [Okteto](https://www.okteto.com/). 
+Hey! My name is Arsh. Across the internet, you'll also find me as **@RinkiyaKeDad** in many places.
 
-My experience in various engineering roles, combined with my ability to explain technical concepts in a simple way, allows me to offer unique value.
-I'm usually the engineer on the non-engineering teams. What does that mean?
-- I work with Marketing to create technical content, tutorials, demos, and collaborations with other products.
-- I work with Product teams to provide developer-centric feedback and assist in documentation efforts.
-- I team up with Sales to provide case studies, competitor analysis, and other content to help close deals.
+With a diverse background in engineering roles, open source, and a knack for simplifying complex technical concepts, I bring a unique perspective to the table. Often, I find myself being the "engineer" on non-engineering teams. What does that mean?
+
+- **Marketing**: I create technical content tailored to ICPs and actively promote developer tools through evangelism, community engagement, and partnerships with other products.
+- **Product**: I provide actionable developer-centric feedback, refine documentation for clarity and usability, and influence the roadmap to align with real-world developer needs.
+- **Sales**: I craft compelling case studies, conduct competitor analyses, and create technical assets that highlight product value, allowing teams to close deals effectively.
 
 ![its a me](/itsame.jpeg)
 
