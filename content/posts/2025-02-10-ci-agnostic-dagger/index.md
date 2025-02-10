@@ -1,7 +1,7 @@
 ---
 title: "Becoming CI Provider Agnostic With Dagger"
 read_time: true
-date: 2025-02-10T00:00:00+05:30
+date: 2025-02-09T00:00:00+05:30
 tags:
   - ci
 ---
@@ -10,7 +10,7 @@ CI (Continuous Integration) is essential to anyone building software. An efficie
 
 However, once you commit to a CI provider's bespoke YAML syntax and have written a pile of pipelines, you're somewhat locked in, with a time-consuming total rewrite in another YAML syntax as the only apparent option. Because of this, most organizations think twice before considering a switch, even when they're not satisfied with their current experience.
 
-But what if we told you it doesn't have to be this way? You can get a better experience from your CI! In this blog, I'll discuss how Dagger makes your CI pipelines portable, allowing you to not only be independent of CI providers (and switch incrementally instead of all at once) but also run those pipelines locally with no changes!
+But what if I told you it doesn't have to be this way? You can get a better experience from your CI! In this blog, I'll discuss how Dagger makes your CI pipelines portable, allowing you to not only be independent of CI providers (and switch incrementally instead of all at once) but also run those pipelines locally with no changes!
 
 ## Vendor Lock-In is a HUGE Problem
 
