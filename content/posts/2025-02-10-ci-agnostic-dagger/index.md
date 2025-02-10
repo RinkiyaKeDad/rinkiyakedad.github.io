@@ -1,7 +1,7 @@
 ---
 title: "Becoming CI Provider Agnostic With Dagger"
 read_time: true
-date: 2025-02-09T00:00:00+05:30
+date: 2025-02-10T00:00:00+05:30
 tags:
   - ci
 ---
