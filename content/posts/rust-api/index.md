@@ -881,7 +881,7 @@ The only thing that is a little different here is that we use a [match](https://
 
 # Creating the handler for PATCH requests
 
-PATCH requests allow us to modify parts of an already saved game in the database. Let’s suppose you want to update the number of plays of a game. Instead of deleting the original record and creating a new one, you can send a patch request which updates the `plays` field with the new count. But since any of the fields could be updated (other than timestamp and game ID), we need a new schema instead of our original schema, because, as per the `GameSchema` setting all fields when sending the request is mandatory, which might not be true in this case. Update the [`schema.rs`](http://schema.rs) file to look like this:
+PATCH requests allow us to modify parts of an already saved game in the database. Let’s suppose you want to update the number of plays of a game. Instead of deleting the original record and creating a new one, you can send a patch request which updates the `plays` field with the new count. But since any of the fields could be updated (other than timestamp and game ID), we need a new schema instead of our original schema, because, as per the `GameSchema` setting all fields when sending the request is mandatory, which might not be true in this case. Update the `schema.rs` file to look like this:
 
 ```rust
 // schema.rs
