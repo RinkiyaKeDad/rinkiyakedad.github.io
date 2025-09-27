@@ -1,6 +1,6 @@
 baseURL: "https://arshsharma.com/"
 title: Arsh Sharma
-paginate: 5
+pagination.pagerSize: 5
 theme: PaperMod
 
 enableRobotsTXT: true
