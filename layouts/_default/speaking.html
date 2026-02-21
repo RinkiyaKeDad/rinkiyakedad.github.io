@@ -8,10 +8,17 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        align-items: baseline;
+        gap: 1.5rem;
     }
 
     .talk-title {
         font-weight: 600;
+        min-width: 0; /* allow shrink so long titles wrap */
+    }
+
+    .talk-date {
+        flex-shrink: 0; /* keep month/year from squishing; gap keeps space from title */
     }
 
     .talk-location {
